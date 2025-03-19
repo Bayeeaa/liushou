@@ -1,6 +1,14 @@
 <script setup lang="ts">
+import { ref } from 'vue';
 import Header from '@/components/Header.vue';
 import Block from '@/components/Block.vue'
+const images = ref([
+  '../src/assets/home_pic/image1.png',
+  '../src/assets/home_pic/image2.png'
+]);
+import { useRouter } from 'vue-router';
+
+
 </script>
 
 <template>
@@ -9,9 +17,9 @@ import Block from '@/components/Block.vue'
     <el-main class="main_pattern">
         <div class="block text-center">
             <el-carousel height="500px">
-            <el-carousel-item v-for="item in 4" :key="item">
-                <h3 class="small justify-center" text="2xl">{{ item }}</h3>
-            </el-carousel-item>
+              <el-carousel-item v-for="(image, index) in images" :key="index">
+                <img :src="image" alt="Carousel Image"/>
+              </el-carousel-item>
             </el-carousel>
         </div>
     </el-main>   
@@ -49,6 +57,7 @@ import Block from '@/components/Block.vue'
 
 <style scoped>
 .main_pattern{
+  /* 侧边距离 */
   padding: 20px 150px;
 }
 .demonstration {
