@@ -9,11 +9,16 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 export default defineConfig({
   plugins: [
     vue(),
-
+    // vueJsx(),
+    // vueDevTools(),
   ],
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
     },
   },
+  server: {
+    host: '0.0.0.0',  // 域名设置
+    port: 3000,
+  }
 })

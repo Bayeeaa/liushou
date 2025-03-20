@@ -115,23 +115,23 @@ const handleSelect = (key: string, keyPath: string[]) => { //添加路径
   '7-3': '/join/volunteer/university',
   '7-4': '/join/contact'
   };
-  console.log(key[0]);
-  if(key[0]==='2'){
+
+  //登录验证
+  if(key[0]==='2'){  
     is_login();
+  }else{
+    router.push(routes[key]) 
   }
   
-  router.push(routes[key])
+  // router.push(routes[key])
 }
+
 const is_login = () => {
   try {
     const token = localStorage.getItem('token');
-    console.log(token);
-    if (!token && to.meta.requiresAuth) {
-      console.log("用户未登录");
+    if (!token) {
       router.push('/login');
     }
-    
-    
   } catch (error) {
     
   }

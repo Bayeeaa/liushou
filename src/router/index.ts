@@ -5,6 +5,8 @@ import Donation from '@/views/donation/donation.vue'
 import Certificate from '@/views/donation/certificate.vue'
 import Subsidy from '@/views/donation/subsidy.vue'
 import Duanxin from '@/views/donation/methods/duanxin.vue'
+import Parents from '@/views/charity/parents.vue'
+import Ngo from '@/views/charity/ngo.vue'
 import Login from '@/views/login.vue'
 
 const router = createRouter({
@@ -12,14 +14,23 @@ const router = createRouter({
   routes: [
     { path:"/", redirect:"/home"},
     { path:"/home", component:()=> import("../views/home.vue") },
+    { path:"/login", component:Login },
     {
       path: '/charity',
       component: Charity,
       children: [
         {
-          path: 'children',  // 注意这里是相对路径，不需要加 /
+          path: 'children',  // 注意这里是相对路径，不需要加 
           component:Children
-        }
+        },
+        {
+          path: 'parents',
+          component:Parents
+        },
+        {
+          path: 'ngo', 
+          component:Ngo
+        },
       ]
     },
     {
