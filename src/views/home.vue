@@ -7,7 +7,7 @@ const images = ref([
   '../src/assets/home_pic/image2.png'
 ]);
 import { useRouter } from 'vue-router';
-
+const value = ref(new Date())
 
 </script>
 
@@ -22,7 +22,17 @@ import { useRouter } from 'vue-router';
               </el-carousel-item>
             </el-carousel>
         </div>
+
+        <div class="block text-center">
+          <br>
+          <el-carousel height="150px">
+            <el-carousel-item v-for="item in 4" :key="item">
+              <h3 class="small justify-center" text="2xl">{{ item }}</h3>
+            </el-carousel-item>
+          </el-carousel>
+        </div>
     </el-main>   
+    
     <el-main class="main_pattern">
         <el-row :gutter="20">
           <el-col :span="6"><Block></Block></el-col>
@@ -38,12 +48,13 @@ import { useRouter } from 'vue-router';
         </el-row>     
     </el-main> 
     <el-main class="main_pattern">
-      <el-row :gutter="20">
-        <el-col :span="8"><div class="grid-content ep-bg-purple" /></el-col>
-        <el-col :span="8"><div class="grid-content ep-bg-purple-light" /></el-col>
+      <el-row :gutter="20" justify="space-between">
+        <el-col :span="12"><div class="grid-content" /></el-col>
+        <el-col :span="12"><div class="grid-content" /></el-col>
       </el-row>
     </el-main>
 
+    <el-divider />
     <el-footer>
 
     </el-footer>
@@ -95,4 +106,5 @@ import { useRouter } from 'vue-router';
   min-height: 350px;
   background-color: rgb(214, 252, 250);
 }
+
 </style>

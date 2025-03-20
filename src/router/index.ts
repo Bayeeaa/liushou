@@ -1,12 +1,45 @@
 import { createRouter, createWebHistory } from 'vue-router'
-
+import Charity from '@/views/charity/charity.vue'
+import Children from '@/views/charity/children.vue'
+import Donation from '@/views/donation/donation.vue'
+import Certificate from '@/views/donation/certificate.vue'
+import Subsidy from '@/views/donation/subsidy.vue'
+import Duanxin from '@/views/donation/methods/duanxin.vue'
+import Login from '@/views/login.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     { path:"/", redirect:"/home"},
     { path:"/home", component:()=> import("../views/home.vue") },
-    
+    {
+      path: '/charity',
+      component: Charity,
+      children: [
+        {
+          path: 'children',  // 注意这里是相对路径，不需要加 /
+          component:Children
+        }
+      ]
+    },
+    {
+      path: '/donation',
+      component: Donation,
+      children: [
+        {
+          path: 'certificate',
+          component:Certificate
+        },
+        {
+          path: 'subsidy',
+          component:Subsidy
+        },
+        {
+          path: 'methods/one',
+          component:Duanxin
+        }
+      ]
+    },
   ],
 })
 

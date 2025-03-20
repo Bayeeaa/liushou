@@ -17,12 +17,6 @@
       <el-menu-item index="2-1">流动/留守儿童</el-menu-item>
       <el-menu-item index="2-2">家长</el-menu-item>
       <el-menu-item index="2-3">社工站和公益机构</el-menu-item>
-      <el-sub-menu index="2-4">
-        <template #title>item four</template>
-        <el-menu-item index="2-4-1">item one</el-menu-item>
-        <el-menu-item index="2-4-2">item two</el-menu-item>
-        <el-menu-item index="2-4-3">item three</el-menu-item>
-      </el-sub-menu>
     </el-sub-menu>
 
     <el-sub-menu index="3">
@@ -31,9 +25,9 @@
       <el-menu-item index="3-2">政府补贴</el-menu-item>
       <el-sub-menu index="3-3">
         <template #title>捐赠方式</template>
-        <el-menu-item index="2-4-1">item one</el-menu-item>
-        <el-menu-item index="2-4-2">item two</el-menu-item>
-        <el-menu-item index="2-4-3">item three</el-menu-item>
+        <el-menu-item index="3-3-1">短信捐赠</el-menu-item>
+        <el-menu-item index="3-3-2">银行转账</el-menu-item>
+        <el-menu-item index="3-3-3">网上捐款</el-menu-item>
       </el-sub-menu>
     </el-sub-menu>
 
@@ -76,16 +70,19 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue'
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
 const activeIndex2 = ref('1')
 const handleSelect = (key: string, keyPath: string[]) => { //添加路径
   const routes = {
+  '0':'/home',
+  '1':'/home',
+
   // 公益模块
-  '2-1': 'charity/children',
-  '2-2': 'charity/parents',
-  '2-3': 'charity/ngo',
-  '2-4-1': 'charity/item-four/one',
-  '2-4-2': 'charity/item-four/two',
-  '2-4-3': 'charity/item-four/three',
+  '2-1': '/charity/children',
+  '2-2': '/charity/parents',
+  '2-3': '/charity/ngo',
 
   // 爱心捐赠
   '3-1': '/donation/certificate',
@@ -118,11 +115,30 @@ const handleSelect = (key: string, keyPath: string[]) => { //添加路径
   '7-3': '/join/volunteer/university',
   '7-4': '/join/contact'
   };
+  console.log(key[0]);
+  if(key[0]==='2'){
+    is_login();
+  }
+  
   router.push(routes[key])
 }
-import { useRouter } from 'vue-router';
+const is_login = () => {
+  try {
+    const token = localStorage.getItem('token');
+    console.log(token);
+    if (!token && to.meta.requiresAuth) {
+      console.log("用户未登录");
+      router.push('/login');
+    }
+    
+    
+  } catch (error) {
+    
+  }
+}
 
-const router = useRouter();
+
+
 </script>
 
 <style>
