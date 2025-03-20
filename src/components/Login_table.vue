@@ -26,13 +26,13 @@
       <el-button type="primary" @click="onSubmit">确认</el-button>
       <el-button @click="onCancel">取消</el-button>
     </el-form-item>
-
   </el-form>
 </template>
 
 <script lang="ts" setup>
 import router from '@/router';
 import { reactive,ref } from 'vue'
+import axios from 'axios';
 
 const ruleForm = reactive({
   pass: '',
@@ -46,9 +46,34 @@ const form = reactive({
   sex: '',
 })
 
-const onSubmit = () => {
-  console.log('submit!')
-}
+const onSubmit = async () => {
+    const data = {
+        name: form.name,
+        identity: form.identity,
+        sex: form.sex,
+        password: ruleForm.pass,
+    };    
+    const pass_check = {
+        pass: ruleForm.pass,
+        pass2: ruleForm.checkPass,
+    }
+    if(ruleForm.checkPass === ruleForm.pass){
+        try {
+            const response = await axios.post('http://localhost:8000/api/register/', data);
+            console.log('注册成功:', response.data);
+            // 跳转到登录页面或者其他页面
+            router.push('/login');
+        } catch (error) {
+            console.error('注册失败:', error);
+        }
+    }else{
+        console.log("密码不一致");
+    }
+
+
+
+
+};
 
 const onCancel = () => {
     router.push('/home')
