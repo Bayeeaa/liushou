@@ -47,7 +47,7 @@ const value = ref(new Date());
 // ]);
 
 // const corsProxy = 'https://cors-anywhere.herokuapp.com/';
-// const apiKey = 'sk-0d4e22f78614454bac9f6f978d5d596c';  // 使用你的 API 密钥
+// const apiKey = '';  // 使用你的 API 密钥
 // const baseURL = 'https://api.deepseek.com/'; // DeepSeek API URL
 
 // // 发送消息
