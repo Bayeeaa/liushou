@@ -22,3 +22,15 @@ export default defineConfig({
     port: 3000,
   }
 })
+
+// module.exports = {
+//   devServer: {
+//     proxy: {
+//       '/api': {
+//         target: 'https://www.deepseek.com',
+//         changeOrigin: true,
+//         pathRewrite: { '^/api': '' },  // 代理时将 "/api" 替换为空
+//       },
+//     },
+//   },
+// };
