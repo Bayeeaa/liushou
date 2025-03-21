@@ -8,12 +8,14 @@ import Duanxin from '@/views/donation/methods/duanxin.vue'
 import Parents from '@/views/charity/parents.vue'
 import Ngo from '@/views/charity/ngo.vue'
 import Login from '@/views/login.vue'
+import Register from '@/views/register.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     { path:"/", redirect:"/home"},
     { path:"/home", component:()=> import("../views/home.vue") },
+    { path:"/register", component:Register },
     { path:"/login", component:Login },
     {
       path: '/charity',

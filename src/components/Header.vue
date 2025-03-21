@@ -118,19 +118,19 @@ const handleSelect = (key: string, keyPath: string[]) => { //添加路径
 
   //登录验证
   if(key[0]==='2'){  
-    is_login();
-  }else{
-    router.push(routes[key]) 
-  }
-  
-  // router.push(routes[key])
+    is_login(routes,key);
+  }else router.push(routes[key])
 }
 
-const is_login = () => {
+const is_login = (routes:any,key:any) => {  
   try {
-    const token = localStorage.getItem('token');
-    if (!token) {
-      router.push('/login');
+    const token = localStorage.getItem('access_token');
+    const identity = localStorage.getItem("user_identity")
+    if (routes[key].substring(9) === identity && token) {
+      router.push(routes[key]);
+    }
+    else{
+      router.push('/login')
     }
   } catch (error) {
     
@@ -151,7 +151,8 @@ const is_login = () => {
   justify-content: space-between; 
 } */
 
-img {   /* 防止图片挤压，图片居中显示，多余的会被裁剪 */
+/* 防止图片挤压，图片居中显示，多余的会被裁剪 */
+img {   
   width:100%;
   height:100%;
   object-fit: cover; 

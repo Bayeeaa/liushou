@@ -1,20 +1,22 @@
 <template>
-<el-container>
+    <el-container>
     <el-header style="padding: 0;"><Header></Header></el-header>
     <el-main class="table_pattern">
-        <div style="font-size:30px">登录</div>
+        <div style="font-size:30px">用户注册</div>
             <el-divider />
-        <Login></Login>
+        <Register_table></Register_table>
     </el-main>
     </el-container>
+
 </template>
 
 <script lang="ts" setup>
+import Register_table from '@/components/Register_table.vue';
 import Header from '@/components/Header.vue';
-import Login from '@/components/Login_table.vue';
 </script>
 
 <style>
-
-
+.table_pattern{
+    padding: 20px 200px;
+}
 </style>
