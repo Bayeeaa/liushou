@@ -7,12 +7,28 @@ const images = ref([
   '../src/assets/home_pic/image2.png'
 ]);
 import { useRouter } from 'vue-router';
-
+const contentItems = [
+  { title: '想问 为什么' },
+  { title: '我不再是你的快乐' },
+  { title: '可是为什么' },
+  { title: '却苦笑说我都懂了' },
+  { title: '叶一楠南' },
+  { title: '自尊常常拖着' },
+  { title: '把爱都走曲折' },
+  { title: '叶一楠南' },
+  { title: '小狗苏苏苏1' },
+  { title: '叶一楠南' },
+  // 更多内容...
+];
 const router = useRouter();
 
 const navigateTo = (path: string) => {
   router.push(path);
 };
+
+const showVideoContent = ref(false); // 初始化为 false
+const showImageContent = ref(false); // 初始化为 false
+
 </script>
 
 <template>
@@ -35,7 +51,13 @@ const navigateTo = (path: string) => {
                 <div class="theme">项目概述</div>
                 <el-button type="danger" @click="navigateTo('/project-overview')">更多</el-button>
               </div>
-              <div class="content">项目概述内容...</div>
+              <div class="content">
+                <ul class="content-list">
+                  <li v-for="(item, index) in contentItems" :key="index">
+                    {{ item.title }} 
+                  </li>
+                </ul>
+              </div>
             </div>
           </el-col>
           <el-col :span="6">
@@ -44,7 +66,13 @@ const navigateTo = (path: string) => {
                 <div class="theme">成功案例</div>
                 <el-button type="danger" @click="navigateTo('/success-cases')">更多</el-button>
               </div>
-              <div class="content">成功案例内容...</div>
+              <div class="content">
+                <ul class="content-list">
+                  <li v-for="(item, index) in contentItems" :key="index">
+                    {{ item.title }} 
+                  </li>
+                </ul>
+              </div>
             </div>
           </el-col>
           <el-col :span="6">
@@ -53,7 +81,13 @@ const navigateTo = (path: string) => {
                 <div class="theme">关于我们</div>
                 <el-button type="danger" @click="navigateTo('/about-us')">更多</el-button>
               </div>
-              <div class="content">关于我们内容...</div>
+              <div class="content">
+                <ul class="content-list">
+                  <li v-for="(item, index) in contentItems" :key="index">
+                    {{ item.title }} 
+                  </li>
+                </ul>
+              </div>
             </div>
           </el-col>
           <el-col :span="6">
@@ -62,7 +96,13 @@ const navigateTo = (path: string) => {
                 <div class="theme">工艺模块</div>
                 <el-button type="danger" @click="navigateTo('/process-module')">更多</el-button>
               </div>
-              <div class="content">工艺模块内容...</div>
+              <div class="content">
+                <ul class="content-list">
+                  <li v-for="(item, index) in contentItems" :key="index">
+                    {{ item.title }} 
+                  </li>
+                </ul>
+              </div>
             </div>
           </el-col>
         </el-row> 
@@ -73,7 +113,13 @@ const navigateTo = (path: string) => {
                 <div class="theme">爱心捐赠</div>
                 <el-button type="danger" @click="navigateTo('/donation')">更多</el-button>
               </div>
-              <div class="content">爱心捐赠内容...</div>
+              <div class="content">
+                <ul class="content-list">
+                  <li v-for="(item, index) in contentItems" :key="index">
+                    {{ item.title }} 
+                  </li>
+                </ul>
+              </div>
             </div>
           </el-col>
           <el-col :span="6">
@@ -82,7 +128,13 @@ const navigateTo = (path: string) => {
                 <div class="theme">信息公开</div>
                 <el-button type="danger" @click="navigateTo('/information-disclosure')">更多</el-button>
               </div>
-              <div class="content">信息公开内容...</div>
+              <div class="content">
+                <ul class="content-list">
+                  <li v-for="(item, index) in contentItems" :key="index">
+                    {{ item.title }} 
+                  </li>
+                </ul>
+              </div>
             </div>
           </el-col>
           <el-col :span="6">
@@ -91,7 +143,13 @@ const navigateTo = (path: string) => {
                 <div class="theme">党建专栏</div>
                 <el-button type="danger" @click="navigateTo('/party-column')">更多</el-button>
               </div>
-              <div class="content">党建专栏内容...</div>
+              <div class="content">
+                <ul class="content-list">
+                  <li v-for="(item, index) in contentItems" :key="index">
+                    {{ item.title }} 
+                  </li>
+                </ul>
+              </div>
             </div>
           </el-col>
           <el-col :span="6">
@@ -100,7 +158,13 @@ const navigateTo = (path: string) => {
                 <div class="theme">加入我们</div>
                 <el-button type="danger" @click="navigateTo('/join-us')">更多</el-button>
               </div>
-              <div class="content">加入我们内容...</div>
+              <div class="content">
+                <ul class="content-list">
+                  <li v-for="(item, index) in contentItems" :key="index">
+                    {{ item.title }} 
+                  </li>
+                </ul>
+              </div>
             </div>
           </el-col>
         </el-row>     
@@ -110,21 +174,49 @@ const navigateTo = (path: string) => {
         <el-col :span="8">
           <div class="grid-content ep-bg-purple">
             <div class="theme-container">
-              <div class="theme">视频</div>
-              <el-button type="danger" @click="navigateTo('/videos')">更多</el-button>
+              <div class="theme">聚焦</div>
+              <el-button type="danger" @click="navigateTo('/focus')">更多</el-button>
             </div>
-            <div class="content">视频内容...</div>
+            <div class="content">
+                <ul class="content-list">
+                  <li v-for="(item, index) in contentItems" :key="index">
+                    {{ item.title }} 
+                  </li>
+                </ul>
+              </div>
           </div>
         </el-col>
         <el-col :span="8">
           <div class="grid-content ep-bg-purple-light">
             <div class="theme-container">
-              <div class="theme">图片</div>
-              <el-button type="danger" @click="navigateTo('/images')">更多</el-button>
+              <div class="video-image-title">
+              <el-button type="text" @click="showVideoContent = true; showImageContent = false">视频</el-button>
+              <div class="divider"></div>
+              <el-button type="text" @click="showVideoContent = false; showImageContent = true">图片</el-button>
+              <el-button type="danger" @click="navigateTo('/videos-images')">更多</el-button>
             </div>
-            <div class="content">图片内容...</div>
-          </div>
-        </el-col>
+            </div>
+
+          <!--视频和图片内容-->
+            <div class="content">
+              <div class="video-image-container">
+                <div class="video-item" v-if="showVideoContent">
+                  <video
+                    src="@/assets/video/sunday.mp4"
+                    width="100%"
+                    height="auto"
+                    controls
+                    preload="metadata"
+                  >
+                  </video>
+                </div>
+                <div class="image-item" v-if="showImageContent">
+                  <img src="@/assets/pig.png" alt="一只叶一楠"/>
+                </div>
+              </div>
+            </div>
+          </div>  
+        </el-col> 
       </el-row>
     </el-main>
 
@@ -207,10 +299,48 @@ const navigateTo = (path: string) => {
 }
 
 .content {
-  margin-bottom: 20px;
+  margin-top: 20px;
 }
 
 .el-button {
   position: relative;
 }
+
+.video-image-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.video-item, .image-item {
+  width: 100%; /* Adjust as needed */
+  position: relative;
+}
+
+.video-item img, .image-item img {
+  width: 100%;
+  height: auto;
+}
+.video-image-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.el-button--text {
+  color: red;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.el-button--text:hover {
+  text-decoration: underline;
+}
+.divider {
+  width: 1px;
+  height: 20px;
+  background-color: black;
+  margin: 0 10px;
+}
+
+
+
 </style>
