@@ -8,11 +8,11 @@
       <el-divider />
       <RouterView />
       <br><br>
-      <el-row class="row-bg" justify="space-evenly">
-        <el-col :span="6"><div class="grid-content ep-bg-purple" /></el-col>
-        <el-col :span="6"><div class="grid-content ep-bg-purple-light" /></el-col>
-        <el-col :span="6"><div class="grid-content ep-bg-purple" /></el-col>
-      </el-row>
+      <el-row :gutter="20">
+        <Block title="最新动态" morePath="/process-module" :Span="8"></Block>
+        <Block title="心灵帮助" morePath="/process-module" :Span="8"></Block>
+        <Block title="最近活动" morePath="/process-module" :Span="8"></Block>
+      </el-row>  
     </el-main>
     <el-main class="main_pattern">
       <el-row :gutter="20" justify="space-between">
@@ -42,7 +42,7 @@ import Header from '@/components/Header.vue';
 import axios from 'axios';
 import { ref, onMounted } from "vue";
 import AMapLoader from "@amap/amap-jsapi-loader";
-
+import Block from '@/components/Block.vue'
 const route = useRoute();
 
 // 定义变量
@@ -141,7 +141,7 @@ const sendMessage = async () => {
 .grid-content {
   border-radius: 4px;
   min-height: 350px;
-  background-color: rgb(214, 252, 250);
+  /* background-color: rgb(214, 252, 250); */
 }
 
 .chat-container {
@@ -180,5 +180,36 @@ const sendMessage = async () => {
   padding: 5px;
   margin: 5px;
   border-radius: 8px;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.text {
+  font-size: 20px;
+}
+
+.item {
+  margin-bottom: 8px;
+}
+
+.theme {
+  font-size: 20px;
+  font-weight: bold;
+  color: red;
+  position: relative;
+}
+
+.theme::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 100%;
+  height: 2px;
+  background-color: red;
 }
 </style>
