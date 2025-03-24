@@ -28,6 +28,7 @@
           </div>
         </el-col>
         <el-col :span="10">
+          <!-- <div id="mapContainer" class="map-container"></div> -->
           <el-calendar v-model="value" />
         </el-col>
       </el-row>
@@ -36,10 +37,11 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
 import { useRoute } from 'vue-router';
 import Header from '@/components/Header.vue';
 import axios from 'axios';
+import { ref, onMounted } from "vue";
+import AMapLoader from "@amap/amap-jsapi-loader";
 
 const route = useRoute();
 
@@ -75,6 +77,59 @@ const sendMessage = async () => {
 
   loading.value = false;
 };
+
+// const getNearbyStations = async () => {
+//   try {
+//     const { data } = await axios.get('http://127.0.0.1:8000/api/nearby-stations/', {
+//       params: { lat: userLat.value, lon: userLon.value },
+//     });
+
+//     nearbyStations.value = data.stations;
+//     addMarkersToMap(nearbyStations.value);
+//   } catch (error) {
+//     console.error("获取附近关爱站失败:", error);
+//   }
+// };
+
+// const userLat = ref(0);
+// const userLon = ref(0);
+// const nearbyStations = ref([]);
+
+// const initMap = async () => {
+//   const AMap = await AMapLoader.load({
+//     key: "",
+//     version: "2.0",
+//     plugins: ["AMap.Geolocation"],
+//   });
+
+//   const map = new AMap.Map("mapContainer", { zoom: 14 });
+
+//   const geolocation = new AMap.Geolocation({ enableHighAccuracy: true });
+//   map.addControl(geolocation);
+
+//   geolocation.getCurrentPosition((status, result) => {
+//     if (status === "complete" && result.position) {
+//       userLat.value = result.position.lat;
+//       userLon.value = result.position.lng;
+//       map.setCenter(result.position);
+
+//       getNearbyStations();
+//     }
+//   });
+// };
+
+// const addMarkersToMap = (stations) => {
+//   stations.forEach((station) => {
+//     const [lng, lat] = station.location.split(",");
+//     new AMap.Marker({
+//       map,
+//       position: [parseFloat(lng), parseFloat(lat)],
+//       title: station.name,
+//     });
+//   });
+// };
+
+// onMounted(initMap);
 </script>
 
 <style>
