@@ -24,10 +24,66 @@ const carouselItems = ref([ //轮播图跳转
   { image: '/src/assets/home_pic/image6.png', path: '/page6' }
 ]);
 
+import { ref, reactive } from 'vue';
+
 import { project } from "@/stores/pages";
-const pj = project()
+const pj = project();
 const project_overview = ref(pj.project_overview);
-const demo = ref(pj.demo)
+const demo = ref(pj.demo);
+// 图书数据
+const books = reactive([
+  {
+    title: "小海蒂",
+    author: "约翰娜·施皮里",
+    image: "/src/assets/books/book1.jpg",
+    description: "一个关于爱和成长的温暖故事。",
+    link: "https://book.douban.com/subject/1023712/"
+  },
+  {
+    title: "我不焦虑",
+    author: "安娜·巴恩斯",
+    image: "/src/assets/books/book2.jpg",
+    description: "帮助孩子克服焦虑的指南。",
+    link: "https://book.douban.com/subject/35857847/"
+  },
+  {
+    title: "我很愤怒",
+    author: "迈克尔·伊恩·布莱克",
+    image: "/src/assets/books/book3.jpg",
+    description: "引导孩子理解和管理愤怒情绪。",
+    link: "https://book.douban.com/subject/35100421/"
+  },
+  {
+    title: "驭风少年",
+    author: "威廉·卡明奎巴",
+    image: "/src/assets/books/book4.jpg",
+    description: "一个自闭症少年的励志故事。",
+    link: "https://book.douban.com/subject/34442005/"
+  },
+  {
+    title: "不爱说话的十一岁",
+    author: "露西·弗兰克",
+    image: "/src/assets/books/book5.jpg",
+    description: "讲述一个沉默少年的成长故事。",
+    link: "https://book.douban.com/subject/35003713/"
+  },
+  {
+    title: "我和我的情绪",
+    author: "伊丽莎白·科尔",
+    image: "/src/assets/books/book6.jpg",
+    description: "帮助孩子理解和管理自己的情绪。",
+    link: "https://book.douban.com/subject/36536557/"
+  },
+  {
+    title: "追光的孩子",
+    author: "唐·库苏",
+    image: "/src/assets/books/book7.jpg",
+    description: "一个关于梦想与坚持的动人故事。",
+    link: "https://book.douban.com/subject/36442292/"
+  }
+]);
+
+
 </script>
 
 <template>
@@ -84,7 +140,41 @@ const demo = ref(pj.demo)
         </el-col>
       </el-row>
     </el-main> 
-    
+
+    <el-main class="main_pattern">
+      <section class="autism-books">
+        <h2>自闭症相关书籍</h2>
+        <el-row :gutter="20">
+          <el-col
+            v-for="book in books"
+            :key="book.title"
+            :span="12"
+          >
+            <el-card class="book-card" shadow="hover">
+              <div class="book-card-flex">
+                <div class="book-info">
+                <h3>{{ book.title }}</h3>
+                <p><strong>作者:</strong> {{ book.author }}</p>
+                <p>{{ book.description }}</p>
+                <el-button
+                  type="primary"
+                  size="mini">
+                <a :href="book.link" target="_blank" style="color: #fff;">
+                  在线阅读
+                </a>
+                </el-button>
+              </div>
+
+              <div class="book-cover-container">
+                <img :src="book.image" :alt="book.title" class="book-cover" />
+              </div>
+            </div>
+            </el-card>
+          </el-col>
+        </el-row>
+      </section>
+    </el-main>
+
     <el-main class="main_pattern">
       <span class="theme" style="font-size: 30px;">活动掠影</span>
       <el-carousel :interval="4000" type="card" height="300px">
@@ -116,4 +206,64 @@ const demo = ref(pj.demo)
 </template>
 
 <style scoped>
+/* 自闭症相关书籍板块样式：减小了内边距以减少留白 */
+.autism-books {
+  padding: 20px 20px; /* 原先是40px 20px，可再视需要调整 */
+  background: #f0f2f5;
+  text-align: center;
+}
+
+.autism-books h2 {
+  font-size: 32px;
+  margin-bottom: 20px;
+  color: #263d4d;
+}
+
+/* 每本书的卡片：去掉 min-height，减少多余留白 */
+.book-card {
+  margin-bottom: 16px; /* 原先是20px，可再自行调小或保留 */
+}
+
+/* 大容器采用Flex布局：左边文字，右边图片 */
+.book-card-flex {
+  display: flex;          /* 启用 Flex */
+  flex-direction: row;    /* 横向排列 */
+  align-items: flex-start;/* 左右顶对齐 */
+  gap: 20px;              /* 左右内容的间距 */
+}
+
+/* 左侧文字区域 */
+.book-info {
+  flex: 1;                /* 占据剩余空间 */
+  text-align: left;
+}
+
+/* 右侧图片容器：固定宽度，保证排版整齐 */
+.book-cover-container {
+  width: 180px;   /* 原先是200px，可根据实际需要调整 */
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+/* 图片自适应容器大小 */
+.book-cover {
+  width: 100%;
+  height: auto; 
+  object-fit: contain; /* 若想让图片完全铺满可改 cover */
+  border-radius: 5px;
+}
+
+/* 书名等文字排版 */
+.book-info h3 {
+  margin: 0 0 5px 0;
+  font-size: 18px;
+  color: #333;
+}
+
+/* 如果不需要特殊样式，可删除这个描述类或在 p 标签上加 class="description" */
+.description {
+  color: #666;
+  line-height: 1.4em;
+  margin: 8px 0 12px;
+}
 </style>
