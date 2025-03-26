@@ -2,17 +2,32 @@
 import { ref } from 'vue';
 import Header from '@/components/Header.vue';
 import Block from '@/components/Block.vue'
+import Footer from '@/components/Footer.vue'
+import '@/views/home.css'; //外部导入css
 const images = ref([
   '../src/assets/home_pic/image1.png',
   '../src/assets/home_pic/image2.png'
 ]);
 import { useRouter } from 'vue-router';
-
 const router = useRouter();
 
 const navigateTo = (path: string) => {
   router.push(path);
 };
+
+const carouselItems = ref([ //轮播图跳转
+  { image: '/src/assets/home_pic/image1.png', path: '/page1' },
+  { image: '/src/assets/home_pic/image2.png', path: '/page2' },
+  { image: '/src/assets/home_pic/image3.png', path: '/page3' },
+  { image: '/src/assets/home_pic/image4.png', path: '/page4' },
+  { image: '/src/assets/home_pic/image5.png', path: '/page5' },
+  { image: '/src/assets/home_pic/image6.png', path: '/page6' }
+]);
+
+import { project } from "@/stores/pages";
+const pj = project()
+const project_overview = ref(pj.project_overview);
+const demo = ref(pj.demo)
 </script>
 
 <template>
@@ -26,110 +41,74 @@ const navigateTo = (path: string) => {
               </el-carousel-item>
             </el-carousel>
         </div>
+
+        <div class="block text-center">
+          <br>
+          <el-carousel height="150px">
+            <el-carousel-item v-for="item in 4" :key="item">
+              <h3 class="small justify-center" text="2xl">{{ item }}</h3>
+            </el-carousel-item>
+          </el-carousel>
+        </div>
     </el-main>   
-    <el-main class="main_pattern">
-        <el-row :gutter="20">
-          <el-col :span="6">
-            <div class="grid-content ep-bg-purple">
-              <div class="theme-container">
-                <div class="theme">项目概述</div>
-                <el-button type="danger" @click="navigateTo('/project-overview')">更多</el-button>
-              </div>
-              <div class="content">项目概述内容...</div>
-            </div>
-          </el-col>
-          <el-col :span="6">
-            <div class="grid-content ep-bg-purple">
-              <div class="theme-container">
-                <div class="theme">成功案例</div>
-                <el-button type="danger" @click="navigateTo('/success-cases')">更多</el-button>
-              </div>
-              <div class="content">成功案例内容...</div>
-            </div>
-          </el-col>
-          <el-col :span="6">
-            <div class="grid-content ep-bg-purple">
-              <div class="theme-container">
-                <div class="theme">关于我们</div>
-                <el-button type="danger" @click="navigateTo('/about-us')">更多</el-button>
-              </div>
-              <div class="content">关于我们内容...</div>
-            </div>
-          </el-col>
-          <el-col :span="6">
-            <div class="grid-content ep-bg-purple">
-              <div class="theme-container">
-                <div class="theme">工艺模块</div>
-                <el-button type="danger" @click="navigateTo('/process-module')">更多</el-button>
-              </div>
-              <div class="content">工艺模块内容...</div>
-            </div>
-          </el-col>
-        </el-row> 
-        <el-row :gutter="20">
-          <el-col :span="6">
-            <div class="grid-content ep-bg-purple">
-              <div class="theme-container">
-                <div class="theme">爱心捐赠</div>
-                <el-button type="danger" @click="navigateTo('/donation')">更多</el-button>
-              </div>
-              <div class="content">爱心捐赠内容...</div>
-            </div>
-          </el-col>
-          <el-col :span="6">
-            <div class="grid-content ep-bg-purple">
-              <div class="theme-container">
-                <div class="theme">信息公开</div>
-                <el-button type="danger" @click="navigateTo('/information-disclosure')">更多</el-button>
-              </div>
-              <div class="content">信息公开内容...</div>
-            </div>
-          </el-col>
-          <el-col :span="6">
-            <div class="grid-content ep-bg-purple">
-              <div class="theme-container">
-                <div class="theme">党建专栏</div>
-                <el-button type="danger" @click="navigateTo('/party-column')">更多</el-button>
-              </div>
-              <div class="content">党建专栏内容...</div>
-            </div>
-          </el-col>
-          <el-col :span="6">
-            <div class="grid-content ep-bg-purple">
-              <div class="theme-container">
-                <div class="theme">加入我们</div>
-                <el-button type="danger" @click="navigateTo('/join-us')">更多</el-button>
-              </div>
-              <div class="content">加入我们内容...</div>
-            </div>
-          </el-col>
-        </el-row>     
-    </el-main> 
-    <el-main class="main_pattern">
+    <el-main class="main_pattern"> 
+      <div style="font-size: 20px; color:rgb(38, 148, 244); ">帮助人次：317</div>
       <el-row :gutter="20">
-        <el-col :span="8">
-          <div class="grid-content ep-bg-purple">
-            <div class="theme-container">
-              <div class="theme">视频</div>
-              <el-button type="danger" @click="navigateTo('/videos')">更多</el-button>
-            </div>
-            <div class="content">视频内容...</div>
-          </div>
-        </el-col>
-        <el-col :span="8">
-          <div class="grid-content ep-bg-purple-light">
-            <div class="theme-container">
-              <div class="theme">图片</div>
-              <el-button type="danger" @click="navigateTo('/images')">更多</el-button>
-            </div>
-            <div class="content">图片内容...</div>
-          </div>
-        </el-col>
+        
       </el-row>
     </el-main>
+    <el-main class="main_pattern">
+      <el-row :gutter="20">
+        <Block title="项目概述" morePath="/project-overview" :Span="8" :items="project_overview"></Block>
+        <Block title="最新动态" morePath="/news" :Span="8" :items="demo"></Block>
+        <Block title="公益模块" morePath="/process-module" :Span="8" :items="demo"></Block>
+      </el-row> 
 
+      <el-row :gutter="20">
+        <Block title="书籍推荐" morePath="/process-module" :Span="8" :items="demo"></Block>
+        <Block title="视频推荐" morePath="/process-module" :Span="8" :items="demo"></Block>
+        <Block title="信息公开" morePath="/process-module" :Span="8" :items="demo"></Block>
+      </el-row>   
+      
+      <el-row>
+        <el-col :span="12" :offset="6">
+          <el-card class="box-card">
+            <template #header>
+              <div class="card-header">
+                <span class="theme">聚焦</span>
+                <el-button type="danger" @click="navigateTo('/success-cases')">更多</el-button>
+              </div>
+            </template>
+            <div v-for="o in 6" :key="o" class="text item">{{ 'List item ' + o }}</div>
+          </el-card>
+        </el-col>
+      </el-row>
+    </el-main> 
+    
+    <el-main class="main_pattern">
+      <span class="theme" style="font-size: 30px;">活动掠影</span>
+      <el-carousel :interval="4000" type="card" height="300px">
+        <el-carousel-item 
+          v-for="(item, index) in carouselItems" 
+          :key="index" 
+          @click="navigateTo(item.path)"
+          style="cursor: pointer;"
+        >
+          <img :src="item.image" alt="carousel image" style="width: 100%; height: 100%; object-fit: cover;" />
+        </el-carousel-item>
+      </el-carousel>    
+
+      <span class="theme" style="font-size: 30px;">视频展示</span>
+      <el-carousel :interval="4000" type="card" height="300px">
+        <el-carousel-item v-for="item in 6" :key="item">
+          <h3 text="2xl" justify="center">{{ item }}</h3>
+        </el-carousel-item>
+      </el-carousel>    
+    </el-main>
+
+    <el-divider />
     <el-footer>
-
+      <Footer></Footer>
     </el-footer>
   </el-container>
 
@@ -137,80 +116,4 @@ const navigateTo = (path: string) => {
 </template>
 
 <style scoped>
-.main_pattern {
-  /* 侧边距离 */
-  padding: 20px 150px;
-}
-
-.demonstration {
-  color: var(--el-text-color-secondary);
-}
-
-.el-carousel__item h3 {
-  color: #475669;
-  opacity: 0.75;
-  line-height: 150px;
-  margin: 0;
-  text-align: center;
-}
-
-.el-carousel__item:nth-child(2n) {
-  background-color: #99a9bf;
-}
-
-.el-carousel__item:nth-child(2n + 1) {
-  background-color: #d3dce6;
-}
-
-.el-row {
-  margin-bottom: 20px;
-}
-
-.el-row:last-child {
-  margin-bottom: 0;
-}
-
-.el-col {
-  border-radius: 4px;
-}
-
-.grid-content {
-  border-radius: 4px;
-  min-height: 350px;
-  background-color: rgb(214, 252, 250);
-  padding: 20px;
-  position: relative;
-}
-
-.theme-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.theme {
-  font-size: 20px;
-  font-weight: bold;
-  color: red;
-  position: relative;
-}
-
-.theme::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: -5px;
-  width: 100%;
-  height: 2px;
-  background-color: red;
-}
-
-.content {
-  margin-bottom: 20px;
-}
-
-.el-button {
-  position: relative;
-}
 </style>
