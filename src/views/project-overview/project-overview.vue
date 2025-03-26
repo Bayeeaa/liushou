@@ -5,7 +5,17 @@
             <el-card class="box-card">
                 <div style="font-size:30px">项目概述</div>
                 <el-divider />
-                <RouterView />
+                <div class="text-list">
+                    <div 
+                        v-for="(item, index) in project_overview" 
+                        :key="index" 
+                        class="text item" 
+                        @click="navigateTo(item.path)"
+                        style="cursor: pointer;"
+                    >
+                        {{ item.title }}
+                    </div>
+                </div>
                 
             </el-card>
         </el-main>
@@ -13,8 +23,18 @@
 </template>
 
 <script lang="ts" setup>
-import { RouterLink } from 'vue-router'
 import Header from '@/components/Header.vue';
+import { project } from "@/stores/pages";
+import { ref } from 'vue';
+import router from '@/router';
+const pj = project()
+const project_overview = ref(pj.project_overview);
+const navigateTo = (path: string) => {
+    router.push(path);
+  };
+
+
+  
 </script>
 
 <style>

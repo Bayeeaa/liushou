@@ -4,7 +4,7 @@
         <template #header>
           <div class="card-header">
             <span class="theme">{{ title }}</span>
-            <el-button type="danger" @click="navigateTo(morePath)">更多</el-button>
+            <el-button type="danger" @click="navigateTo(morePath)" :items="items">更多</el-button>
           </div>
         </template>
   
@@ -27,7 +27,7 @@
   import { defineProps } from 'vue';
   import router from '@/router';
   
-  defineProps<{
+  const props = defineProps<{
     title: string;
     morePath: string;
     Span: number;
@@ -37,18 +37,21 @@
   const navigateTo = (path: string) => {
     router.push(path);
   };
+
+
   </script>
   
   <style scoped>
   .text-list {
-    height: 190px;
-    overflow: hidden; /* 隐藏超出部分 */
+    /* 隐藏超出部分 */
+    /* height: 190px;
+    overflow: hidden;  */
 
     /* 设置max-height添加滚动条 */
-    /* flex: 1;
+    flex: 1;
     max-height: 200px; 
     overflow-y: auto;
-    padding-right: 10px; */
+    padding-right: 10px;
   }
   </style>
   

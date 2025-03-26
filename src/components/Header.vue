@@ -3,7 +3,7 @@
     :default-active="activeIndex2"
     class="el-menu-demo"
     mode="horizontal"
-    background-color="red"
+    background-color="#337ecc"
     text-color="#fff"
     active-text-color="#ffd04b"
     @select="handleSelect" 
@@ -34,15 +34,12 @@
     <el-sub-menu index="4">
       <template #title>信息公开</template>
       <el-menu-item index="4-1">工作报告</el-menu-item>
-      <el-menu-item index="4-2">item two</el-menu-item>
-      <el-menu-item index="4-3">item three</el-menu-item>
+      <el-menu-item index="4-2">资金用途</el-menu-item>
     </el-sub-menu>
 
     <el-sub-menu index="5">
       <template #title>党建专栏</template>
       <el-menu-item index="5-1">党建报告</el-menu-item>
-      <el-menu-item index="5-2">item two</el-menu-item>
-      <el-menu-item index="5-3">item three</el-menu-item>
     </el-sub-menu>
 
     <el-sub-menu index="6">
@@ -50,12 +47,7 @@
       <el-menu-item index="6-1">平台成员</el-menu-item>
       <el-menu-item index="6-2">平台章程</el-menu-item>
       <el-menu-item index="6-3">管理制度</el-menu-item>
-      <el-sub-menu index="6-4">
-        <template #title>分支主题</template>
-        <el-menu-item index="6-4-1">item one</el-menu-item>
-        <el-menu-item index="6-4-2">item two</el-menu-item>
-        <el-menu-item index="6-4-3">item three</el-menu-item>
-      </el-sub-menu>
+      <el-menu-item index="6-4">平台中心站</el-menu-item>
     </el-sub-menu>
 
     <el-sub-menu index="7">
@@ -93,21 +85,16 @@ const handleSelect = (key: string, keyPath: string[]) => { //添加路径
 
   // 信息公开
   '4-1': '/info/report',
-  '4-2': '/info/two',
-  '4-3': '/info/three',
+  '4-2': '/info/finance',
 
   // 党建专栏
   '5-1': '/party/report',
-  '5-2': '/party/two',
-  '5-3': '/party/three',
 
   // 关于我们
   '6-1': '/about/members',
   '6-2': '/about/constitution',
   '6-3': '/about/rules',
-  '6-4-1': '/about/branch/one',
-  '6-4-2': '/about/branch/two',
-  '6-4-3': '/about/branch/three',
+  '6-4': '/about/centre',
 
   // 加入我们
   '7-1': '/join/volunteer/general',

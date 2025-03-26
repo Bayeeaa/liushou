@@ -24,33 +24,10 @@ const carouselItems = ref([ //轮播图跳转
   { image: '/src/assets/home_pic/image6.png', path: '/page6' }
 ]);
 
-const project_overview = ref([
-  { title: '钱塘区留守儿童关爱', path:'/project-overview/page1' },
-  { title: 'AI助力心理需求辅导', path:'/project-overview/page2' },
-  { title: '线上线下构建网络交流平台', path:'/project-overview/page3' },
-  { title: 'item', path:'/#' },
-  { title: 'item', path:'/#' },
-  { title: 'item', path:'/#' },
-  { title: 'item', path:'/#' },
-  { title: 'item', path:'/#' },
-  { title: 'item', path:'/#' },
-  { title: 'item', path:'/#' },
-  { title: 'item', path:'/#' },
-  { title: 'item', path:'/#' },
-  { title: 'item', path:'/#' },
-  { title: 'item', path:'/#' },
-  { title: 'item', path:'/#' },
-  
-])
-
-const demo = ref([
-  { title: 'item', path:'/#' },
-  { title: 'item', path:'/#' },
-  { title: 'item', path:'/#' },
-  { title: 'item', path:'/#' },
-  { title: 'item', path:'/#' },
-  { title: 'item', path:'/#' },
-])
+import { project } from "@/stores/pages";
+const pj = project()
+const project_overview = ref(pj.project_overview);
+const demo = ref(pj.demo)
 </script>
 
 <template>
@@ -74,19 +51,23 @@ const demo = ref([
           </el-carousel>
         </div>
     </el-main>   
-    
+    <el-main class="main_pattern"> 
+      <div style="font-size: 20px; color:rgb(38, 148, 244); ">帮助人次：317</div>
+      <el-row :gutter="20">
+        
+      </el-row>
+    </el-main>
     <el-main class="main_pattern">
       <el-row :gutter="20">
-        <Block title="项目概述" morePath="/project-overview" :Span="6" :items="project_overview"></Block>
-        <Block title="最新动态" morePath="/news" :Span="6" :items="demo"></Block>
-        <Block title="关于我们" morePath="/about-us" :Span="6" :items="demo"></Block>
-        <Block title="工艺模块" morePath="/process-module" :Span="6" :items="demo"></Block>
+        <Block title="项目概述" morePath="/project-overview" :Span="8" :items="project_overview"></Block>
+        <Block title="最新动态" morePath="/news" :Span="8" :items="demo"></Block>
+        <Block title="公益模块" morePath="/process-module" :Span="8" :items="demo"></Block>
       </el-row> 
 
       <el-row :gutter="20">
-        <Block title="工艺模块" morePath="/process-module" :Span="8" :items="demo"></Block>
-        <Block title="工艺模块" morePath="/process-module" :Span="8" :items="demo"></Block>
-        <Block title="工艺模块" morePath="/process-module" :Span="8" :items="demo"></Block>
+        <Block title="书籍推荐" morePath="/process-module" :Span="8" :items="demo"></Block>
+        <Block title="视频推荐" morePath="/process-module" :Span="8" :items="demo"></Block>
+        <Block title="信息公开" morePath="/process-module" :Span="8" :items="demo"></Block>
       </el-row>   
       
       <el-row>
