@@ -3,7 +3,7 @@
         <el-header style="padding: 0;"><Header></Header></el-header>
         <el-main  class="main_pattern">
             <el-card class="box-card">
-                <div style="font-size:30px">关于我们</div>
+                <div style="font-size:30px">{{ breadcrumbTitle }}</div>
                 <el-divider />
                 <el-breadcrumb separator="/">
                     <el-breadcrumb-item v-for="(item, index) in breadcrumbItems" :key="index" :to="item.path">
@@ -22,6 +22,10 @@ import { computed } from 'vue';
 import { useRoute } from 'vue-router';
 
 const route = useRoute();
+
+const breadcrumbTitle = computed(() => {
+  return route.meta.title;
+});
 
 const breadcrumbItems = computed(() => {
   const path = route.path.split('/').filter(item => item);

@@ -38,33 +38,40 @@ const router = createRouter({
       children: [
         {
           path: 'volunteer',  // 注意这里是相对路径，不需要加 
-          component:Volunteer
+          component:Volunteer,
+          meta: { title: '志愿者' },
         },
         {
           path: 'contact',
-          component:Contact
+          component:Contact,
+          meta: { title: '联系我们' },
         },
       ]
     },
     {
       path: '/about',
       component: About,
+      meta: { title: '关于我们' },
       children: [
         {
           path: 'centre',  // 注意这里是相对路径，不需要加 
-          component:Centre
+          component:Centre,
+          meta: { title: '平台中心站' },
         },
         {
           path: 'constitution',
-          component:Constitution
+          component:Constitution,
+          meta: { title: '平台章程' },
         },
         {
           path: 'members',
-          component:Members
+          component:Members,
+          meta: { title: '平台成员' },
         },
         {
           path: 'rules',
-          component:Rules
+          component:Rules,
+          meta: { title: '管理制度' },
         },
       ]
     },
@@ -74,7 +81,8 @@ const router = createRouter({
       children: [
         {
           path: 'children',  // 注意这里是相对路径，不需要加 
-          component:Children
+          component:Children,
+          
         },
         {
           path: 'parents',
@@ -92,15 +100,18 @@ const router = createRouter({
       children: [
         {
           path: 'certificate',
-          component:Certificate
+          component:Certificate,
+          meta: { title: '证书申领' },
         },
         {
           path: 'subsidy',
-          component:Subsidy
+          component:Subsidy,
+          meta: { title: '政府补贴' },
         },
         {
           path: 'methods/one',
-          component:Duanxin
+          component:Duanxin,
+          meta: { title: '短信捐赠' },
         }
       ]
     },
