@@ -9,15 +9,6 @@ export const project = defineStore("project", {
         { title: 'item', path:'/#' },
         { title: 'item', path:'/#' },
         { title: 'item', path:'/#' },
-        { title: 'item', path:'/#' },
-        { title: 'item', path:'/#' },
-        { title: 'item', path:'/#' },
-        { title: 'item', path:'/#' },
-        { title: 'item', path:'/#' },
-        { title: 'item', path:'/#' },
-        { title: 'item', path:'/#' },
-        { title: 'item', path:'/#' },
-        { title: 'item', path:'/#' },
     ],
 
     demo: [

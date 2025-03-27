@@ -9,9 +9,9 @@
       <RouterView />
       <br><br>
       <el-row :gutter="20">
-        <Block title="最新动态" morePath="/process-module" :Span="8"></Block>
-        <Block title="心灵帮助" morePath="/process-module" :Span="8"></Block>
-        <Block title="最近活动" morePath="/process-module" :Span="8"></Block>
+        <Block title="最新动态" morePath="/process-module" :Span="8" :items="demo"></Block>
+        <Block title="心灵帮助" morePath="/process-module" :Span="8" :items="demo"></Block>
+        <Block title="最近活动" morePath="/process-module" :Span="8" :items="demo"></Block>
       </el-row>  
     </el-main>
     <el-main class="main_pattern">
@@ -44,6 +44,8 @@ import { ref, onMounted } from "vue";
 import AMapLoader from "@amap/amap-jsapi-loader";
 import Block from '@/components/Block.vue'
 const route = useRoute();
+
+const demo = ref();
 
 // 定义变量
 const value = ref(new Date());

@@ -5,8 +5,9 @@ import Block from '@/components/Block.vue'
 import Footer from '@/components/Footer.vue'
 import '@/views/home.css'; //外部导入css
 const images = ref([
-  '../src/assets/home_pic/image1.png',
-  '../src/assets/home_pic/image2.png'
+  '../src/assets/home_pic/image1.jpg',
+  '../src/assets/home_pic/image2.jpg',
+  '../src/assets/home_pic/image3.jpg'
 ]);
 import { useRouter } from 'vue-router';
 const router = useRouter();
@@ -15,14 +16,25 @@ const navigateTo = (path: string) => {
   router.push(path);
 };
 
-const carouselItems = ref([ //轮播图跳转
-  { image: '/src/assets/home_pic/image1.png', path: '/page1' },
-  { image: '/src/assets/home_pic/image2.png', path: '/page2' },
-  { image: '/src/assets/home_pic/image3.png', path: '/page3' },
-  { image: '/src/assets/home_pic/image4.png', path: '/page4' },
-  { image: '/src/assets/home_pic/image5.png', path: '/page5' },
-  { image: '/src/assets/home_pic/image6.png', path: '/page6' }
+const carouselItems = ref([
+  '../src/assets/activity/act1.jpg',
+  '../src/assets/activity/act2.jpg',
+  '../src/assets/activity/act3.jpg',
+  '../src/assets/activity/act4.jpg',
+  '../src/assets/activity/act5.jpg',
+  '../src/assets/activity/act6.jpg',
 ]);
+
+const video = ref([
+  '../src/assets/video/video1.mp4'
+])
+
+const word = ref([
+  "习近平：少年儿童是我们伟大祖国的希望、我们伟大民族的希望。",
+  "少年儿童是祖国的未来。 —— 习近平",
+  "习近平：少年强则国强，少年进步则国进步。",
+
+])
 
 import { project } from "@/stores/pages";
 const pj = project()
@@ -45,8 +57,8 @@ const demo = ref(pj.demo)
         <div class="block text-center">
           <br>
           <el-carousel height="150px">
-            <el-carousel-item v-for="item in 4" :key="item">
-              <h3 class="small justify-center" text="2xl">{{ item }}</h3>
+            <el-carousel-item v-for="item in word" :key="item">
+              <div style="font-size: 40px;">{{ item }}</div>
             </el-carousel-item>
           </el-carousel>
         </div>
@@ -88,22 +100,24 @@ const demo = ref(pj.demo)
     <el-main class="main_pattern">
       <span class="theme" style="font-size: 30px;">活动掠影</span>
       <el-carousel :interval="4000" type="card" height="300px">
-        <el-carousel-item 
-          v-for="(item, index) in carouselItems" 
-          :key="index" 
-          @click="navigateTo(item.path)"
-          style="cursor: pointer;"
-        >
-          <img :src="item.image" alt="carousel image" style="width: 100%; height: 100%; object-fit: cover;" />
+        <el-carousel-item v-for="(image, index) in carouselItems" :key="index">
+          <img :src="image" alt="Carousel Image"/>
         </el-carousel-item>
       </el-carousel>    
 
       <span class="theme" style="font-size: 30px;">视频展示</span>
       <el-carousel :interval="4000" type="card" height="300px">
-        <el-carousel-item v-for="item in 6" :key="item">
-          <h3 text="2xl" justify="center">{{ item }}</h3>
+        <el-carousel-item v-for="(videoSrc, index) in video" :key="index">
+          <video 
+            :src="videoSrc" 
+            controls 
+            autoplay 
+            loop
+            muted
+            class="video-player"
+          />
         </el-carousel-item>
-      </el-carousel>    
+      </el-carousel>
     </el-main>
 
     <el-divider />

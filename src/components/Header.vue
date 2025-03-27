@@ -8,7 +8,7 @@
     active-text-color="#ffd04b"
     @select="handleSelect" 
   >
-  <el-menu-item index="0"><img src="../assets/pig.png"></el-menu-item>
+  <el-menu-item index="0"><img src="../assets/logo.png"></el-menu-item>
     <!-- <div class="flex-grow" /> --> 
     <el-menu-item index="1">首页</el-menu-item>
 
@@ -106,7 +106,7 @@ const handleSelect = (key: string, keyPath: string[]) => { //添加路径
   //登录验证
   if(key[0]==='2'){  
     is_login(routes,key);
-  }else router.push(routes[key])
+  }else router.push(routes[key as keyof typeof routes]);
 }
 
 const is_login = (routes:any,key:any) => {  

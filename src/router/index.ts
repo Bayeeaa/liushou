@@ -11,6 +11,7 @@ import Login from '@/views/login.vue'
 import Register from '@/views/register.vue'
 import project_overview from '@/views/project-overview/project-overview.vue'
 import page1 from '@/views/project-overview/page/page1.vue'
+import Page from '@/views/page.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -55,14 +56,24 @@ const router = createRouter({
         }
       ]
     },
+    // {
+    //   path: '/project-overview',
+    //   component: project_overview,
+    // },
+    // {
+    //   path: '/project-overview/page1',
+    //   component: page1,
+    // }
     {
-      path: '/project-overview',
-      component: project_overview,
+      path: '/project-overview/:pageId',
+      name: 'project-overview',
+      component: Page,
     },
     {
-      path: '/project-overview/page1',
-      component: page1,
-    }
+        path: '/news/:pageId',
+        name: 'news',
+        component: Page,
+    },
   ],
 })
 

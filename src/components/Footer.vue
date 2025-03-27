@@ -2,7 +2,7 @@
     <footer class="footer">
       <div class="footer-content">
         <div class="footer-left">
-      <img src="@/assets/pig.png" alt="Logo" class="footer-logo"/>
+      <img src="@/assets/logo.png" alt="Logo" class="footer-logo"/>
           <p>版权所有 © 2023</p>
         </div>
         <div class="footer-center">
