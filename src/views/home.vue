@@ -5,9 +5,9 @@ import Block from '@/components/Block.vue'
 import Footer from '@/components/Footer.vue'
 import '@/views/home.css'; //外部导入css
 const images = ref([
-  'public/home_pic/image1.jpg',
-  'public/home_pic/image2.jpg',
-  'public/home_pic/image3.jpg'
+  'home_pic/image1.jpg',
+  'home_pic/image2.jpg',
+  'home_pic/image3.jpg'
 ]);
 import { useRouter } from 'vue-router';
 const router = useRouter();
@@ -17,16 +17,16 @@ const navigateTo = (path: string) => {
 };
 
 const carouselItems = ref([
-  'public/activity/act1.jpg',
-  'public/activity/act2.jpg',
-  'public/activity/act3.jpg',
-  'public/activity/act4.jpg',
-  'public/activity/act5.jpg',
-  'public/activity/act6.jpg',
+  'activity/act1.jpg',
+  'activity/act2.jpg',
+  'activity/act3.jpg',
+  'activity/act4.jpg',
+  'activity/act5.jpg',
+  'activity/act6.jpg',
 ]);
 
 const video = ref([
-  'public/video/video1.mp4'
+  'video/video1.mp4'
 ])
 
 const word = ref([
@@ -50,49 +50,49 @@ const books = reactive([
   {
     title: "小海蒂",
     author: "约翰娜·施皮里",
-    image: "public/books/book1.jpg",
+    image: "books/book1.jpg",
     description: "一个关于爱和成长的温暖故事。",
     link: "https://book.douban.com/subject/1023712/"
   },
   {
     title: "我不焦虑",
     author: "安娜·巴恩斯",
-    image: "public/books/book2.jpg",
+    image: "books/book2.jpg",
     description: "帮助孩子克服焦虑的指南。",
     link: "https://book.douban.com/subject/35857847/"
   },
   {
     title: "我很愤怒",
     author: "迈克尔·伊恩·布莱克",
-    image: "public/books/book3.jpg",
+    image: "books/book3.jpg",
     description: "引导孩子理解和管理愤怒情绪。",
     link: "https://book.douban.com/subject/35100421/"
   },
   {
     title: "驭风少年",
     author: "威廉·卡明奎巴",
-    image: "public/books/book4.jpg",
+    image: "books/book4.jpg",
     description: "一个自闭症少年的励志故事。",
     link: "https://book.douban.com/subject/34442005/"
   },
   {
     title: "不爱说话的十一岁",
     author: "露西·弗兰克",
-    image: "public/books/book5.jpg",
+    image: "books/book5.jpg",
     description: "讲述一个沉默少年的成长故事。",
     link: "https://book.douban.com/subject/35003713/"
   },
   {
     title: "我和我的情绪",
     author: "伊丽莎白·科尔",
-    image: "public/books/book6.jpg",
+    image: "books/book6.jpg",
     description: "帮助孩子理解和管理自己的情绪。",
     link: "https://book.douban.com/subject/36536557/"
   },
   {
     title: "追光的孩子",
     author: "唐·库苏",
-    image: "public/books/book7.jpg",
+    image: "books/book7.jpg",
     description: "一个关于梦想与坚持的动人故事。",
     link: "https://book.douban.com/subject/36442292/"
   }
