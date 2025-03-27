@@ -128,3 +128,85 @@
     object-fit: cover; /* 确保视频填充整个区域 */
     border-radius: 10px; /* 可选，增加美观 */
   }
+
+  .focus-section {
+    background: #f9f9f9;
+    border-radius: 8px;
+    padding: 20px;
+  }
+  .focus-section .text.item {
+    margin: 8px 0;           /* 每条之间留点距离 */
+    font-size: 17px;         /* 字号适中 */
+  }
+  
+  /* 链接默认颜色和鼠标悬停效果 */
+  .focus-section .text.item a {
+    color: #333;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .focus-section .text.item a:hover {
+    color: #81878d; /* Element-Plus主色调 */
+  }
+  
+  
+  /* 自闭症相关书籍板块样式：减小了内边距以减少留白 */
+  .autism-books {
+    padding: 20px 20px; /* 原先是40px 20px，可再视需要调整 */
+    background: #f0f2f5;
+    text-align: center;
+  }
+  
+  .autism-books h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: #263d4d;
+  }
+  
+  /* 每本书的卡片：去掉 min-height，减少多余留白 */
+  .book-card {
+    margin-bottom: 16px; /* 原先是20px，可再自行调小或保留 */
+  }
+  
+  /* 大容器采用Flex布局：左边文字，右边图片 */
+  .book-card-flex {
+    display: flex;          /* 启用 Flex */
+    flex-direction: row;    /* 横向排列 */
+    align-items: flex-start;/* 左右顶对齐 */
+    gap: 20px;              /* 左右内容的间距 */
+  }
+  
+  /* 左侧文字区域 */
+  .book-info {
+    flex: 1;                /* 占据剩余空间 */
+    text-align: left;
+  }
+  
+  /* 右侧图片容器：固定宽度，保证排版整齐 */
+  .book-cover-container {
+    width: 180px;   /* 原先是200px，可根据实际需要调整 */
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  
+  /* 图片自适应容器大小 */
+  .book-cover {
+    width: 100%;
+    height: auto; 
+    object-fit: contain; /* 若想让图片完全铺满可改 cover */
+    border-radius: 5px;
+  }
+  
+  /* 书名等文字排版 */
+  .book-info h3 {
+    margin: 0 0 5px 0;
+    font-size: 18px;
+    color: #333;
+  }
+  
+  /* 如果不需要特殊样式，可删除这个描述类或在 p 标签上加 class="description" */
+  .description {
+    color: #666;
+    line-height: 1.4em;
+    margin: 8px 0 12px;
+  }
