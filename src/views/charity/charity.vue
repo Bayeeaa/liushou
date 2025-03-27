@@ -21,7 +21,7 @@
             <h1><el-icon><HelpFilled /></el-icon> AI情感分析师</h1>
             <el-input v-model="userInput" placeholder="输入消息..." @keyup.enter="sendMessage" />
             <el-button type="primary" @click="sendMessage" :loading="loading">发送</el-button>
-            <div v-for="(msg, index) in messages" :key="index">
+            <div v-for="(msg, index) in messages" :key="index" >
               <div v-if="msg.role === 'user'" style="text-align: right;">用户: {{ msg.content }}</div>
               <div v-if="msg.role === 'ai'" style="text-align: left;">deepseek: {{ msg.content }}</div>
             </div>
@@ -45,7 +45,9 @@ import AMapLoader from "@amap/amap-jsapi-loader";
 import Block from '@/components/Block.vue'
 const route = useRoute();
 
-const demo = ref();
+import { project } from "@/stores/pages";
+const pj = project()
+const demo = ref(pj.demo)
 
 // 定义变量
 const value = ref(new Date());
@@ -79,59 +81,6 @@ const sendMessage = async () => {
 
   loading.value = false;
 };
-
-// const getNearbyStations = async () => {
-//   try {
-//     const { data } = await axios.get('http://127.0.0.1:8000/api/nearby-stations/', {
-//       params: { lat: userLat.value, lon: userLon.value },
-//     });
-
-//     nearbyStations.value = data.stations;
-//     addMarkersToMap(nearbyStations.value);
-//   } catch (error) {
-//     console.error("获取附近关爱站失败:", error);
-//   }
-// };
-
-// const userLat = ref(0);
-// const userLon = ref(0);
-// const nearbyStations = ref([]);
-
-// const initMap = async () => {
-//   const AMap = await AMapLoader.load({
-//     key: "",
-//     version: "2.0",
-//     plugins: ["AMap.Geolocation"],
-//   });
-
-//   const map = new AMap.Map("mapContainer", { zoom: 14 });
-
-//   const geolocation = new AMap.Geolocation({ enableHighAccuracy: true });
-//   map.addControl(geolocation);
-
-//   geolocation.getCurrentPosition((status, result) => {
-//     if (status === "complete" && result.position) {
-//       userLat.value = result.position.lat;
-//       userLon.value = result.position.lng;
-//       map.setCenter(result.position);
-
-//       getNearbyStations();
-//     }
-//   });
-// };
-
-// const addMarkersToMap = (stations) => {
-//   stations.forEach((station) => {
-//     const [lng, lat] = station.location.split(",");
-//     new AMap.Marker({
-//       map,
-//       position: [parseFloat(lng), parseFloat(lat)],
-//       title: station.name,
-//     });
-//   });
-// };
-
-// onMounted(initMap);
 </script>
 
 <style>
@@ -148,6 +97,7 @@ const sendMessage = async () => {
 
 .chat-container {
   width: 100%;
+  height: 600px;
   padding: 10px;
   border: 1px solid #ddd;
   border-radius: 8px;
@@ -158,6 +108,8 @@ const sendMessage = async () => {
 }
 
 .chat-messages {
+  flex-grow: 1; /* 让聊天消息区填充剩余空间 */
+  overflow-y: auto; /* 当内容超出时显示滚动条 */  
   max-height: 200px;
   overflow-y: auto;
   padding: 5px;

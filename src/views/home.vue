@@ -5,9 +5,9 @@ import Block from '@/components/Block.vue'
 import Footer from '@/components/Footer.vue'
 import '@/views/home.css'; //外部导入css
 const images = ref([
-  '../src/assets/home_pic/image1.jpg',
-  '../src/assets/home_pic/image2.jpg',
-  '../src/assets/home_pic/image3.jpg'
+  'public/home_pic/image1.jpg',
+  'public/home_pic/image2.jpg',
+  'public/home_pic/image3.jpg'
 ]);
 import { useRouter } from 'vue-router';
 const router = useRouter();
@@ -17,16 +17,16 @@ const navigateTo = (path: string) => {
 };
 
 const carouselItems = ref([
-  '../src/assets/activity/act1.jpg',
-  '../src/assets/activity/act2.jpg',
-  '../src/assets/activity/act3.jpg',
-  '../src/assets/activity/act4.jpg',
-  '../src/assets/activity/act5.jpg',
-  '../src/assets/activity/act6.jpg',
+  'public/activity/act1.jpg',
+  'public/activity/act2.jpg',
+  'public/activity/act3.jpg',
+  'public/activity/act4.jpg',
+  'public/activity/act5.jpg',
+  'public/activity/act6.jpg',
 ]);
 
 const video = ref([
-  '../src/assets/video/video1.mp4'
+  'public/video/video1.mp4'
 ])
 
 const word = ref([
