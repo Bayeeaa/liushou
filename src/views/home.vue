@@ -2,32 +2,87 @@
 import { ref } from 'vue';
 import Header from '@/components/Header.vue';
 import Block from '@/components/Block.vue'
+import Footer from '@/components/Footer.vue'
+import '@/views/home.css'; //外部导入css
 const images = ref([
   '../src/assets/home_pic/image1.png',
   '../src/assets/home_pic/image2.png'
 ]);
 import { useRouter } from 'vue-router';
-const contentItems = [
-  { title: '想问 为什么' },
-  { title: '我不再是你的快乐' },
-  { title: '可是为什么' },
-  { title: '却苦笑说我都懂了' },
-  { title: '叶一楠南' },
-  { title: '自尊常常拖着' },
-  { title: '把爱都走曲折' },
-  { title: '叶一楠南' },
-  { title: '小狗苏苏苏1' },
-  { title: '叶一楠南' },
-  // 更多内容...
-];
 const router = useRouter();
 
 const navigateTo = (path: string) => {
   router.push(path);
 };
 
-const showVideoContent = ref(false); // 初始化为 false
-const showImageContent = ref(false); // 初始化为 false
+const carouselItems = ref([ //轮播图跳转
+  { image: '/src/assets/home_pic/image1.png', path: '/page1' },
+  { image: '/src/assets/home_pic/image2.png', path: '/page2' },
+  { image: '/src/assets/home_pic/image3.png', path: '/page3' },
+  { image: '/src/assets/home_pic/image4.png', path: '/page4' },
+  { image: '/src/assets/home_pic/image5.png', path: '/page5' },
+  { image: '/src/assets/home_pic/image6.png', path: '/page6' }
+]);
+
+import { ref, reactive } from 'vue';
+
+import { project } from "@/stores/pages";
+const pj = project();
+const project_overview = ref(pj.project_overview);
+const demo = ref(pj.demo);
+// 图书数据
+const books = reactive([
+  {
+    title: "小海蒂",
+    author: "约翰娜·施皮里",
+    image: "/src/assets/books/book1.jpg",
+    description: "一个关于爱和成长的温暖故事。",
+    link: "https://book.douban.com/subject/1023712/"
+  },
+  {
+    title: "我不焦虑",
+    author: "安娜·巴恩斯",
+    image: "/src/assets/books/book2.jpg",
+    description: "帮助孩子克服焦虑的指南。",
+    link: "https://book.douban.com/subject/35857847/"
+  },
+  {
+    title: "我很愤怒",
+    author: "迈克尔·伊恩·布莱克",
+    image: "/src/assets/books/book3.jpg",
+    description: "引导孩子理解和管理愤怒情绪。",
+    link: "https://book.douban.com/subject/35100421/"
+  },
+  {
+    title: "驭风少年",
+    author: "威廉·卡明奎巴",
+    image: "/src/assets/books/book4.jpg",
+    description: "一个自闭症少年的励志故事。",
+    link: "https://book.douban.com/subject/34442005/"
+  },
+  {
+    title: "不爱说话的十一岁",
+    author: "露西·弗兰克",
+    image: "/src/assets/books/book5.jpg",
+    description: "讲述一个沉默少年的成长故事。",
+    link: "https://book.douban.com/subject/35003713/"
+  },
+  {
+    title: "我和我的情绪",
+    author: "伊丽莎白·科尔",
+    image: "/src/assets/books/book6.jpg",
+    description: "帮助孩子理解和管理自己的情绪。",
+    link: "https://book.douban.com/subject/36536557/"
+  },
+  {
+    title: "追光的孩子",
+    author: "唐·库苏",
+    image: "/src/assets/books/book7.jpg",
+    description: "一个关于梦想与坚持的动人故事。",
+    link: "https://book.douban.com/subject/36442292/"
+  }
+]);
+
 
 </script>
 
@@ -42,186 +97,108 @@ const showImageContent = ref(false); // 初始化为 false
               </el-carousel-item>
             </el-carousel>
         </div>
-    </el-main>   
-    <el-main class="main_pattern">
-        <el-row :gutter="20">
-          <el-col :span="6">
-            <div class="grid-content ep-bg-purple">
-              <div class="theme-container">
-                <div class="theme">项目概述</div>
-                <el-button type="danger" @click="navigateTo('/project-overview')">更多</el-button>
-              </div>
-              <div class="content">
-                <ul class="content-list">
-                  <li v-for="(item, index) in contentItems" :key="index">
-                    {{ item.title }} 
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </el-col>
-          <el-col :span="6">
-            <div class="grid-content ep-bg-purple">
-              <div class="theme-container">
-                <div class="theme">成功案例</div>
-                <el-button type="danger" @click="navigateTo('/success-cases')">更多</el-button>
-              </div>
-              <div class="content">
-                <ul class="content-list">
-                  <li v-for="(item, index) in contentItems" :key="index">
-                    {{ item.title }} 
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </el-col>
-          <el-col :span="6">
-            <div class="grid-content ep-bg-purple">
-              <div class="theme-container">
-                <div class="theme">关于我们</div>
-                <el-button type="danger" @click="navigateTo('/about-us')">更多</el-button>
-              </div>
-              <div class="content">
-                <ul class="content-list">
-                  <li v-for="(item, index) in contentItems" :key="index">
-                    {{ item.title }} 
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </el-col>
-          <el-col :span="6">
-            <div class="grid-content ep-bg-purple">
-              <div class="theme-container">
-                <div class="theme">工艺模块</div>
-                <el-button type="danger" @click="navigateTo('/process-module')">更多</el-button>
-              </div>
-              <div class="content">
-                <ul class="content-list">
-                  <li v-for="(item, index) in contentItems" :key="index">
-                    {{ item.title }} 
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </el-col>
-        </el-row> 
-        <el-row :gutter="20">
-          <el-col :span="6">
-            <div class="grid-content ep-bg-purple">
-              <div class="theme-container">
-                <div class="theme">爱心捐赠</div>
-                <el-button type="danger" @click="navigateTo('/donation')">更多</el-button>
-              </div>
-              <div class="content">
-                <ul class="content-list">
-                  <li v-for="(item, index) in contentItems" :key="index">
-                    {{ item.title }} 
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </el-col>
-          <el-col :span="6">
-            <div class="grid-content ep-bg-purple">
-              <div class="theme-container">
-                <div class="theme">信息公开</div>
-                <el-button type="danger" @click="navigateTo('/information-disclosure')">更多</el-button>
-              </div>
-              <div class="content">
-                <ul class="content-list">
-                  <li v-for="(item, index) in contentItems" :key="index">
-                    {{ item.title }} 
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </el-col>
-          <el-col :span="6">
-            <div class="grid-content ep-bg-purple">
-              <div class="theme-container">
-                <div class="theme">党建专栏</div>
-                <el-button type="danger" @click="navigateTo('/party-column')">更多</el-button>
-              </div>
-              <div class="content">
-                <ul class="content-list">
-                  <li v-for="(item, index) in contentItems" :key="index">
-                    {{ item.title }} 
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </el-col>
-          <el-col :span="6">
-            <div class="grid-content ep-bg-purple">
-              <div class="theme-container">
-                <div class="theme">加入我们</div>
-                <el-button type="danger" @click="navigateTo('/join-us')">更多</el-button>
-              </div>
-              <div class="content">
-                <ul class="content-list">
-                  <li v-for="(item, index) in contentItems" :key="index">
-                    {{ item.title }} 
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </el-col>
-        </el-row>     
-    </el-main> 
-    <el-main class="main_pattern">
-      <el-row :gutter="20">
-        <el-col :span="8">
-          <div class="grid-content ep-bg-purple">
-            <div class="theme-container">
-              <div class="theme">聚焦</div>
-              <el-button type="danger" @click="navigateTo('/focus')">更多</el-button>
-            </div>
-            <div class="content">
-                <ul class="content-list">
-                  <li v-for="(item, index) in contentItems" :key="index">
-                    {{ item.title }} 
-                  </li>
-                </ul>
-              </div>
-          </div>
-        </el-col>
-        <el-col :span="8">
-          <div class="grid-content ep-bg-purple-light">
-            <div class="theme-container">
-              <div class="video-image-title">
-              <el-button type="text" @click="showVideoContent = true; showImageContent = false">视频</el-button>
-              <div class="divider"></div>
-              <el-button type="text" @click="showVideoContent = false; showImageContent = true">图片</el-button>
-              <el-button type="danger" @click="navigateTo('/videos-images')">更多</el-button>
-            </div>
-            </div>
 
-          <!--视频和图片内容-->
-            <div class="content">
-              <div class="video-image-container">
-                <div class="video-item" v-if="showVideoContent">
-                  <video
-                    src="@/assets/video/sunday.mp4"
-                    width="100%"
-                    height="auto"
-                    controls
-                    preload="metadata"
-                  >
-                  </video>
-                </div>
-                <div class="image-item" v-if="showImageContent">
-                  <img src="@/assets/pig.png" alt="一只叶一楠"/>
-                </div>
-              </div>
-            </div>
-          </div>  
-        </el-col> 
+        <div class="block text-center">
+          <br>
+          <el-carousel height="150px">
+            <el-carousel-item v-for="item in 4" :key="item">
+              <h3 class="small justify-center" text="2xl">{{ item }}</h3>
+            </el-carousel-item>
+          </el-carousel>
+        </div>
+    </el-main>   
+    <el-main class="main_pattern"> 
+      <div style="font-size: 20px; color:rgb(38, 148, 244); ">帮助人次：317</div>
+      <el-row :gutter="20">
+        
       </el-row>
     </el-main>
+    <el-main class="main_pattern">
+      <el-row :gutter="20">
+        <Block title="项目概述" morePath="/project-overview" :Span="8" :items="project_overview"></Block>
+        <Block title="最新动态" morePath="/news" :Span="8" :items="demo"></Block>
+        <Block title="公益模块" morePath="/process-module" :Span="8" :items="demo"></Block>
+      </el-row> 
 
+      <el-row :gutter="20">
+        <Block title="书籍推荐" morePath="/process-module" :Span="8" :items="demo"></Block>
+        <Block title="视频推荐" morePath="/process-module" :Span="8" :items="demo"></Block>
+        <Block title="信息公开" morePath="/process-module" :Span="8" :items="demo"></Block>
+      </el-row>   
+      
+      <el-row>
+        <el-col :span="12" :offset="6">
+          <el-card class="box-card">
+            <template #header>
+              <div class="card-header">
+                <span class="theme">聚焦</span>
+                <el-button type="danger" @click="navigateTo('/success-cases')">更多</el-button>
+              </div>
+            </template>
+            <div v-for="o in 6" :key="o" class="text item">{{ 'List item ' + o }}</div>
+          </el-card>
+        </el-col>
+      </el-row>
+    </el-main> 
+
+    <el-main class="main_pattern">
+      <section class="autism-books">
+        <h2>自闭症相关书籍</h2>
+        <el-row :gutter="20">
+          <el-col
+            v-for="book in books"
+            :key="book.title"
+            :span="12"
+          >
+            <el-card class="book-card" shadow="hover">
+              <div class="book-card-flex">
+                <div class="book-info">
+                <h3>{{ book.title }}</h3>
+                <p><strong>作者:</strong> {{ book.author }}</p>
+                <p>{{ book.description }}</p>
+                <el-button
+                  type="primary"
+                  size="mini">
+                <a :href="book.link" target="_blank" style="color: #fff;">
+                  在线阅读
+                </a>
+                </el-button>
+              </div>
+
+              <div class="book-cover-container">
+                <img :src="book.image" :alt="book.title" class="book-cover" />
+              </div>
+            </div>
+            </el-card>
+          </el-col>
+        </el-row>
+      </section>
+    </el-main>
+
+    <el-main class="main_pattern">
+      <span class="theme" style="font-size: 30px;">活动掠影</span>
+      <el-carousel :interval="4000" type="card" height="300px">
+        <el-carousel-item 
+          v-for="(item, index) in carouselItems" 
+          :key="index" 
+          @click="navigateTo(item.path)"
+          style="cursor: pointer;"
+        >
+          <img :src="item.image" alt="carousel image" style="width: 100%; height: 100%; object-fit: cover;" />
+        </el-carousel-item>
+      </el-carousel>    
+
+      <span class="theme" style="font-size: 30px;">视频展示</span>
+      <el-carousel :interval="4000" type="card" height="300px">
+        <el-carousel-item v-for="item in 6" :key="item">
+          <h3 text="2xl" justify="center">{{ item }}</h3>
+        </el-carousel-item>
+      </el-carousel>    
+    </el-main>
+
+    <el-divider />
     <el-footer>
-
+      <Footer></Footer>
     </el-footer>
   </el-container>
 
@@ -229,118 +206,64 @@ const showImageContent = ref(false); // 初始化为 false
 </template>
 
 <style scoped>
-.main_pattern {
-  /* 侧边距离 */
-  padding: 20px 150px;
-}
-
-.demonstration {
-  color: var(--el-text-color-secondary);
-}
-
-.el-carousel__item h3 {
-  color: #475669;
-  opacity: 0.75;
-  line-height: 150px;
-  margin: 0;
+/* 自闭症相关书籍板块样式：减小了内边距以减少留白 */
+.autism-books {
+  padding: 20px 20px; /* 原先是40px 20px，可再视需要调整 */
+  background: #f0f2f5;
   text-align: center;
 }
 
-.el-carousel__item:nth-child(2n) {
-  background-color: #99a9bf;
-}
-
-.el-carousel__item:nth-child(2n + 1) {
-  background-color: #d3dce6;
-}
-
-.el-row {
+.autism-books h2 {
+  font-size: 32px;
   margin-bottom: 20px;
+  color: #263d4d;
 }
 
-.el-row:last-child {
-  margin-bottom: 0;
+/* 每本书的卡片：去掉 min-height，减少多余留白 */
+.book-card {
+  margin-bottom: 16px; /* 原先是20px，可再自行调小或保留 */
 }
 
-.el-col {
-  border-radius: 4px;
+/* 大容器采用Flex布局：左边文字，右边图片 */
+.book-card-flex {
+  display: flex;          /* 启用 Flex */
+  flex-direction: row;    /* 横向排列 */
+  align-items: flex-start;/* 左右顶对齐 */
+  gap: 20px;              /* 左右内容的间距 */
 }
 
-.grid-content {
-  border-radius: 4px;
-  min-height: 350px;
-  background-color: rgb(214, 252, 250);
-  padding: 20px;
-  position: relative;
+/* 左侧文字区域 */
+.book-info {
+  flex: 1;                /* 占据剩余空间 */
+  text-align: left;
 }
 
-.theme-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
+/* 右侧图片容器：固定宽度，保证排版整齐 */
+.book-cover-container {
+  width: 180px;   /* 原先是200px，可根据实际需要调整 */
+  border-radius: 5px;
+  overflow: hidden;
 }
 
-.theme {
-  font-size: 20px;
-  font-weight: bold;
-  color: red;
-  position: relative;
-}
-
-.theme::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: -5px;
+/* 图片自适应容器大小 */
+.book-cover {
   width: 100%;
-  height: 2px;
-  background-color: red;
+  height: auto; 
+  object-fit: contain; /* 若想让图片完全铺满可改 cover */
+  border-radius: 5px;
 }
 
-.content {
-  margin-top: 20px;
+/* 书名等文字排版 */
+.book-info h3 {
+  margin: 0 0 5px 0;
+  font-size: 18px;
+  color: #333;
 }
 
-.el-button {
-  position: relative;
+/* 如果不需要特殊样式，可删除这个描述类或在 p 标签上加 class="description" */
+.description {
+  color: #666;
+  line-height: 1.4em;
+  margin: 8px 0 12px;
 }
-
-.video-image-container {
-  display: flex;
-  justify-content: space-between;
-}
-
-.video-item, .image-item {
-  width: 100%; /* Adjust as needed */
-  position: relative;
-}
-
-.video-item img, .image-item img {
-  width: 100%;
-  height: auto;
-}
-.video-image-title {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.el-button--text {
-  color: red;
-  font-size: 20px;
-  font-weight: bold;
-}
-
-.el-button--text:hover {
-  text-decoration: underline;
-}
-.divider {
-  width: 1px;
-  height: 20px;
-  background-color: black;
-  margin: 0 10px;
-}
-
-
-
 </style>
