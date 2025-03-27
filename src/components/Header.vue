@@ -52,10 +52,8 @@
 
     <el-sub-menu index="7">
       <template #title>加入我们</template>
-      <el-menu-item index="7-1">普通志愿者</el-menu-item>
-      <el-menu-item index="7-2">专业志愿者</el-menu-item>
-      <el-menu-item index="7-3">大学生志愿者</el-menu-item>
-      <el-menu-item index="7-4">联系我们</el-menu-item>
+      <el-menu-item index="7-1">志愿者</el-menu-item>
+      <el-menu-item index="7-2">联系我们</el-menu-item>
     </el-sub-menu>
   </el-menu>
 </template>
@@ -97,10 +95,8 @@ const handleSelect = (key: string, keyPath: string[]) => { //添加路径
   '6-4': '/about/centre',
 
   // 加入我们
-  '7-1': '/join/volunteer/general',
-  '7-2': '/join/volunteer/professional',
-  '7-3': '/join/volunteer/university',
-  '7-4': '/join/contact'
+  '7-1': '/join/volunteer',
+  '7-2': '/join/contact'
   };
 
   //登录验证

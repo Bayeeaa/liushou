@@ -1,6 +1,6 @@
 <template>
   <el-col :span="Span">
-    <el-card class="box-card">
+    <el-card class="box-card" >
       <template #header>
         <div class="card-header">
           <span class="theme">{{ title }}</span>
@@ -37,21 +37,14 @@ const props = defineProps<{
 const navigateTo = (path: string) => {
   router.push(path);
 };
-
-
 </script>
 
 <style scoped>
-.text-list {
-  /* 隐藏超出部分 */
-  /* height: 190px;
-  overflow: hidden;  */
 
-  /* 设置max-height添加滚动条 */
+.text-list {
   flex: 1;
-  max-height: 200px; 
+  max-height: 200px;
   overflow-y: auto;
   padding-right: 10px;
 }
 </style>
-  
