@@ -12,16 +12,18 @@
         <Block title="最新动态" morePath="/process-module" :Span="8" :items="demo"></Block>
         <Block title="心灵帮助" morePath="/process-module" :Span="8" :items="demo"></Block>
         <Block title="最近活动" morePath="/process-module" :Span="8" :items="demo"></Block>
-      </el-row>  
+      </el-row>
     </el-main>
     <el-main class="main_pattern">
       <el-row :gutter="20" justify="space-between">
         <el-col :span="12">
           <div class="chat-container">
-            <h1><el-icon><HelpFilled /></el-icon> AI情感分析师</h1>
+            <h1><el-icon>
+                <HelpFilled />
+              </el-icon> AI情感分析师</h1>
             <el-input v-model="userInput" placeholder="输入消息..." @keyup.enter="sendMessage" />
             <el-button type="primary" @click="sendMessage" :loading="loading">发送</el-button>
-            <div v-for="(msg, index) in messages" :key="index" >
+            <div v-for="(msg, index) in messages" :key="index">
               <div v-if="msg.role === 'user'" style="text-align: right;">用户: {{ msg.content }}</div>
               <div v-if="msg.role === 'ai'" style="text-align: left;">deepseek: {{ msg.content }}</div>
             </div>
@@ -32,6 +34,13 @@
           <el-calendar v-model="value" />
         </el-col>
       </el-row>
+      <section class="mbti-section">
+        <h2>MBTI性格类型自测</h2>
+        <p>“终于被理解的感觉真好。”</p>
+        <el-button type="primary" @click="jumpToMBTI" style="font-size: 18px;">
+          前往自测
+        </el-button>
+      </section>
     </el-main>
   </el-container>
 </template>
@@ -56,7 +65,7 @@ const messages = ref([
   { role: 'ai', content: '你好！有什么我可以帮忙的吗？' },
 ]);
 
-const loading = ref(false);  
+const loading = ref(false);
 const backendURL = 'http://127.0.0.1:8000/api/chat/';
 
 const sendMessage = async () => {
@@ -80,6 +89,10 @@ const sendMessage = async () => {
   userInput.value = '';
 
   loading.value = false;
+};
+// 点击按钮跳转到外部 MBTI 自测网址
+const jumpToMBTI = () => {
+  window.open('https://www.16personalities.com/ch/', '_blank');
 };
 </script>
 
@@ -108,8 +121,10 @@ const sendMessage = async () => {
 }
 
 .chat-messages {
-  flex-grow: 1; /* 让聊天消息区填充剩余空间 */
-  overflow-y: auto; /* 当内容超出时显示滚动条 */  
+  flex-grow: 1;
+  /* 让聊天消息区填充剩余空间 */
+  overflow-y: auto;
+  /* 当内容超出时显示滚动条 */
   max-height: 200px;
   overflow-y: auto;
   padding: 5px;
@@ -166,4 +181,29 @@ const sendMessage = async () => {
   height: 2px;
   background-color: red;
 }
+.survey-embed {
+  margin-top: 30px;
+  padding: 20px;
+  background: #f8f8f8; /* 根据需要 */
+}
+
+.mbti-section {
+  margin-top: 30px;
+  padding: 20px;
+  background: #fdfdfd;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.mbti-section h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.mbti-section p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
 </style>
