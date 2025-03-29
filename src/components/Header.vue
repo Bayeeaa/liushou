@@ -20,14 +20,7 @@
 
     <el-sub-menu index="3">
       <template #title>爱心捐赠</template>
-      <el-menu-item index="3-1">证书申领</el-menu-item>
-      <el-menu-item index="3-2">政府补贴</el-menu-item>
-      <el-sub-menu index="3-3">
-        <template #title>捐赠方式</template>
-        <el-menu-item index="3-3-1">短信捐赠</el-menu-item>
-        <el-menu-item index="3-3-2">银行转账</el-menu-item>
-        <el-menu-item index="3-3-3">网上捐款</el-menu-item>
-      </el-sub-menu>
+      <el-menu-item index="3-1">在线捐赠</el-menu-item>
     </el-sub-menu>
 
     <el-sub-menu index="4">
@@ -65,7 +58,6 @@ const router = useRouter();
 const activeIndex2 = ref('1')
 const handleSelect = (key: string, keyPath: string[]) => { //添加路径
   const routes = {
-  '0':'/home',
   '1':'/home',
 
   // 公益模块
@@ -74,11 +66,7 @@ const handleSelect = (key: string, keyPath: string[]) => { //添加路径
   '2-3': '/charity/ngo',
 
   // 爱心捐赠
-  '3-1': '/donation/certificate',
-  '3-2': '/donation/subsidy',
-  '3-3-1': '/donation/methods/one',
-  '3-3-2': '/donation/methods/two',
-  '3-3-3': '/donation/methods/three',
+  '3-1': '/donation',
 
   // 信息公开
   '4-1': '/info/report',

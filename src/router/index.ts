@@ -26,6 +26,11 @@ import Members from '@/views/about/members.vue'
 import Rules from '@/views/about/rules.vue'
 import News from '@/views/news/news.vue'
 import Charity_p from '@/views/charity-page/charity.vue'
+import Info from '@/views/info/info.vue'
+import Finance from '@/views/info/finance.vue'
+import Report from '@/views/info/report.vue'
+import Party from '@/views/party/party.vue'
+import Party_Report from '@/views/party/report.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -116,6 +121,33 @@ const router = createRouter({
           meta: { title: '短信捐赠' },
         }
       ]
+    },
+    {
+      path: '/info',
+      component: Info,
+      children: [
+        {
+          path: 'finance',
+          component: Finance,
+          meta: { title: '资金用途' },
+        },
+        {
+          path: 'report',
+          component: Report,
+          meta: { title: '工作报告' },
+        },
+      ]
+    },
+    {
+      path: '/party',
+      component: Party,
+      children: [
+        {
+          path: 'report',
+          component: Party_Report,
+          meta: { title: '党建报告' },
+        },
+      ]  
     },
     {path: '/project-overview',component: project_overview,},
     {path: '/project-overview/page1',component: project_page1,},

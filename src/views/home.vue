@@ -106,7 +106,7 @@ const charity = ref(pj.charity)
   <el-container>
     <el-header style="padding: 0;">
       <div style="height: 100px;" class="header-top">
-        
+
         <div class="logo-and-name">
           <img class="logo-img" src="@/assets/logo.png" alt="Logo" />
           <span class="platform-name">童心智联公益平台</span>
@@ -161,9 +161,8 @@ const charity = ref(pj.charity)
       </el-row> 
 
       <el-row :gutter="20">
-        <Block title="书籍推荐" morePath="/process-module" :Span="8" :items="demo"></Block>
-        <Block title="视频推荐" morePath="/process-module" :Span="8" :items="demo"></Block>
-        <Block title="信息公开" morePath="/process-module" :Span="8" :items="demo"></Block>
+        <Block title="视频推荐" morePath="/process-module" :Span="12" :items="demo"></Block>
+        <Block title="信息公开" morePath="/process-module" :Span="12" :items="demo"></Block>
       </el-row>   
       
       <el-row>
@@ -191,7 +190,7 @@ const charity = ref(pj.charity)
     
     <el-main class="main_pattern">
       <section class="autism-books">
-        <h2>自闭症相关书籍</h2>
+        <h2>推荐书籍</h2>
         <el-row :gutter="20">
           <el-col
             v-for="book in books"
