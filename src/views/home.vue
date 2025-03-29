@@ -104,7 +104,31 @@ const charity = ref(pj.charity)
 
 <template>
   <el-container>
-    <el-header style="padding: 0;"><Header></Header></el-header>
+    <el-header style="padding: 0;">
+      <div style="height: 100px;" class="header-top">
+        
+        <div class="logo-and-name">
+          <img class="logo-img" src="@/assets/logo.png" alt="Logo" />
+          <span class="platform-name">童心智联公益平台</span>
+        </div>
+        
+        <div class="slogan">
+          <h1>孤影不孤，心声有应</h1>
+        </div>
+
+        <div class="search-box">
+          <el-input placeholder="请输入搜索内容">
+            <template #append>
+              <el-button>
+                <el-icon><Search /></el-icon>
+              </el-button>
+            </template>
+          </el-input>
+        </div>
+      </div>
+      <Header></Header>
+    </el-header>
+    <div style="height: 120px;"></div>
     <el-main class="main_pattern">
         <div class="block text-center">
             <el-carousel height="500px">

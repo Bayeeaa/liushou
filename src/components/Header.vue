@@ -8,8 +8,7 @@
     active-text-color="#ffd04b"
     @select="handleSelect" 
   >
-  <el-menu-item index="0"><img src="../assets/logo.png"></el-menu-item>
-    <!-- <div class="flex-grow" /> --> 
+    <div class="flex-grow" /> 
     <el-menu-item index="1">首页</el-menu-item>
 
     <el-sub-menu index="2">
@@ -126,7 +125,7 @@ const is_login = (routes:any,key:any) => {
 
 <style>
 .flex-grow {
-  flex-grow: 1;
+  flex-grow: 0.5;
 }
 
 /* .el-menu {
@@ -140,5 +139,6 @@ img {
   height:100%;
   object-fit: cover; 
 }
+
 
 </style>

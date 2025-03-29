@@ -211,3 +211,66 @@
   line-height: 1.4em;
   margin: 8px 0 12px;
 }
+
+.header-top {
+  width:80%;
+  margin: 0 auto;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #ffffff;
+  /* 改为白色边框，使整体更柔和 */
+  border-bottom: 2px solid #ffffff;
+}
+
+/* 左侧：Logo 与平台名称 */
+.logo-and-name {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-img {
+  width: 60px;
+  height: auto;
+}
+
+.platform-name {
+  /*改成楷体字体*/
+  font-family: KaiTi;
+  font-size: 30px;
+  font-weight: bold;
+  color: #333;
+  white-space: nowrap;
+}
+
+/* 中间：标语 */
+.slogan {
+  font-family: KaiTi;
+  text-align: center;
+  flex-grow: 1;
+}
+
+.slogan h1 {
+  font-size: 26px;
+  font-weight: bold;
+  color: #d9534f;
+  margin: 0;
+}
+
+/* 右侧：搜索框 */
+.search-box {
+  width: 280px;
+}
+
+/* 下半部分：导航菜单 */
+.nav-menu {
+  width:80%;
+  margin: 0 auto;
+}
+/* 让菜单整体更美观，可在这里加一些间距 */
+.nav-menu-container el-menu {
+  /* 如果想稍微加点上/下内边距 */
+  padding: 0 10px;
+}

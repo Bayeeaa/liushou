@@ -34,6 +34,13 @@
           <el-calendar v-model="value" />
         </el-col>
       </el-row>
+      <section class="mbti-section">
+        <h2>MBTI性格类型自测</h2>
+        <p>“终于被理解的感觉真好。”</p>
+        <el-button type="primary" @click="jumpToMBTI" style="font-size: 18px;">
+          前往自测
+        </el-button>
+      </section>
     </el-main>
   </el-container>
 </template>
@@ -82,6 +89,10 @@ const sendMessage = async () => {
   userInput.value = '';
 
   loading.value = false;
+};
+
+const jumpToMBTI = () => {
+  window.open('https://www.16personalities.com/ch/', '_blank');
 };
 </script>
 
@@ -166,5 +177,30 @@ const sendMessage = async () => {
   width: 100%;
   height: 2px;
   background-color: red;
+}
+
+.survey-embed {
+  margin-top: 30px;
+  padding: 20px;
+  background: #f8f8f8; /* 根据需要 */
+}
+
+.mbti-section {
+  margin-top: 30px;
+  padding: 20px;
+  background: #fdfdfd;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.mbti-section h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.mbti-section p {
+  font-size: 18px;
+  margin-bottom: 20px;
 }
 </style>
