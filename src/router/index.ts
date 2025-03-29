@@ -24,6 +24,8 @@ import Centre from '@/views/about/centre.vue'
 import Constitution from '@/views/about/constitution.vue'
 import Members from '@/views/about/members.vue'
 import Rules from '@/views/about/rules.vue'
+import News from '@/views/news/news.vue'
+import Charity_p from '@/views/charity-page/charity.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -115,34 +117,16 @@ const router = createRouter({
         }
       ]
     },
-    {
-      path: '/project-overview',
-      component: project_overview,
-    },
-    {
-      path: '/project-overview/page1',
-      component: project_page1,
-    },
-    {
-      path: '/project-overview/page2',
-      component: project_page2,
-    },
-    {
-      path: '/project-overview/page3',
-      component: project_page3,
-    },
-    {
-      path: '/project-overview/page4',
-      component: project_page4,
-    },
-    {
-      path: '/project-overview/page5',
-      component: project_page5,
-    },
-    {
-      path: '/project-overview/page6',
-      component: project_page6,
-    }
+    {path: '/project-overview',component: project_overview,},
+    {path: '/project-overview/page1',component: project_page1,},
+    {path: '/project-overview/page2',component: project_page2,},
+    {path: '/project-overview/page3',component: project_page3,},
+    {path: '/project-overview/page4',component: project_page4,},
+    {path: '/project-overview/page5',component: project_page5,},
+    {path: '/project-overview/page6',component: project_page6,},
+    {path: '/news',component: News,},
+
+    {path:'/charity-page',component:Charity_p},
   ],
 })
 

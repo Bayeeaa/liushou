@@ -21,9 +21,11 @@
             <h1><el-icon><HelpFilled /></el-icon> AI情感分析师</h1>
             <el-input v-model="userInput" placeholder="输入消息..." @keyup.enter="sendMessage" />
             <el-button type="primary" @click="sendMessage" :loading="loading">发送</el-button>
-            <div v-for="(msg, index) in messages" :key="index" >
-              <div v-if="msg.role === 'user'" style="text-align: right;">用户: {{ msg.content }}</div>
-              <div v-if="msg.role === 'ai'" style="text-align: left;">deepseek: {{ msg.content }}</div>
+            <div class="chat-messages">
+              <div v-for="(msg, index) in messages" :key="index">
+                <div v-if="msg.role === 'user'" class="user-message">用户: {{ msg.content }}</div>
+                <div v-if="msg.role === 'ai'" class="ai-message">deepseek: {{ msg.content }}</div>
+              </div>
             </div>
           </div>
         </el-col>
@@ -110,7 +112,7 @@ const sendMessage = async () => {
 .chat-messages {
   flex-grow: 1; /* 让聊天消息区填充剩余空间 */
   overflow-y: auto; /* 当内容超出时显示滚动条 */  
-  max-height: 200px;
+  max-height: 400px;
   overflow-y: auto;
   padding: 5px;
   border: 1px solid #ccc;
@@ -129,7 +131,6 @@ const sendMessage = async () => {
 
 .ai-message {
   text-align: left;
-  background: #ddd;
   color: black;
   padding: 5px;
   margin: 5px;

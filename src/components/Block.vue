@@ -47,4 +47,12 @@ const navigateTo = (path: string) => {
   overflow-y: auto;
   padding-right: 10px;
 }
+.text.item {
+  cursor: pointer;
+  white-space: nowrap;  /* 不换行 */
+  overflow: hidden;      /* 超出部分隐藏 */
+  text-overflow: ellipsis; /* 显示省略号 */
+  display: block;        /* 确保 text-overflow 生效 */
+  width: 100%;           /* 让元素撑满父容器 */
+}
 </style>

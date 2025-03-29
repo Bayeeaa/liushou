@@ -12,10 +12,6 @@ const images = ref([
 import { useRouter } from 'vue-router';
 const router = useRouter();
 
-const navigateTo = (path: string) => {
-  router.push(path);
-};
-
 const carouselItems = ref([
   'activity/act1.jpg',
   'activity/act2.jpg',
@@ -102,6 +98,8 @@ import { project } from "@/stores/pages";
 const pj = project()
 const project_overview = ref(pj.project_overview);
 const demo = ref(pj.demo)
+const news = ref(pj.news)
+const charity = ref(pj.charity)
 </script>
 
 <template>
@@ -134,8 +132,8 @@ const demo = ref(pj.demo)
     <el-main class="main_pattern">
       <el-row :gutter="20">
         <Block title="项目概述" morePath="/project-overview" :Span="8" :items="project_overview"></Block>
-        <Block title="最新动态" morePath="/news" :Span="8" :items="demo"></Block>
-        <Block title="公益模块" morePath="/process-module" :Span="8" :items="demo"></Block>
+        <Block title="最新动态" morePath="/news" :Span="8" :items="news"></Block>
+        <Block title="公益模块" morePath="/charity-page" :Span="8" :items="charity"></Block>
       </el-row> 
 
       <el-row :gutter="20">
