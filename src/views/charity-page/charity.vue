@@ -7,7 +7,7 @@
                 <el-divider />
                 <div class="text-list">
                     <div 
-                        v-for="(item, index) in project_overview" 
+                        v-for="(item, index) in charity" 
                         :key="index" 
                         class="text item" 
                         @click="navigateTo(item.path)"
@@ -28,7 +28,7 @@ import { project } from "@/stores/pages";
 import { ref } from 'vue';
 import router from '@/router';
 const pj = project()
-const project_overview = ref(pj.news);
+const charity = ref(pj.charity);
 const navigateTo = (path: string) => {
     router.push(path);
 };

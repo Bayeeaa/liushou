@@ -21,7 +21,23 @@ export const project = defineStore("project", {
       { title:'希望之光：如何通过公益项目改变留守儿童的未来',path:'/charity-page/page4' },
     ],
 
-    
+    info: [
+      { title:'志愿者暖冬行动：为留守儿童送去温暖与希望',path:'/info-pages/page1' },
+      { title:'乡村女孩的求学路：她用努力改变命运',path:'/info-pages/page2' },
+      { title:'全国留守儿童现状调查：他们最需要什么？',path:'/info-pages/page3' },
+      { title:'希望之光：如何通过公益项目改变留守儿童的未来',path:'/info-pages/page4' },
+      { title:'希望之光：如何通过公益项目改变留守儿童的未来',path:'/info-pages/page5' },
+      { title:'希望之光：如何通过公益项目改变留守儿童的未来',path:'/info-pages/page6' },
+    ],
+
+    video: [
+      { title: 'item', path:'/#' },
+      { title: 'item', path:'/#' },
+      { title: 'item', path:'/#' },
+      { title: 'item', path:'/#' },
+      { title: 'item', path:'/#' },
+      { title: 'item', path:'/#' },
+    ],
 
     demo: [
         { title: 'item', path:'/#' },

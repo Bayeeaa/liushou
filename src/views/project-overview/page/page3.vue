@@ -5,7 +5,6 @@
             <el-card class="box-card">
                 <div style="font-size:30px">钱塘区留守儿童关爱</div>
                 <el-divider />
-                <RouterView />
             </el-card>
         </el-main>
     </el-container>

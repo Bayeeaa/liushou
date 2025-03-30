@@ -11,7 +11,7 @@
       <el-row :gutter="20">
         <Block title="最新动态" morePath="/process-module" :Span="8" :items="demo"></Block>
         <Block title="心灵帮助" morePath="/process-module" :Span="8" :items="demo"></Block>
-        <Block title="最近活动" morePath="/process-module" :Span="8" :items="demo"></Block>
+        <Block title="鸡汤文学" morePath="/process-module" :Span="8" :items="demo"></Block>
       </el-row>  
     </el-main>
     <el-main class="main_pattern">

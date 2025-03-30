@@ -25,12 +25,28 @@ import Constitution from '@/views/about/constitution.vue'
 import Members from '@/views/about/members.vue'
 import Rules from '@/views/about/rules.vue'
 import News from '@/views/news/news.vue'
+import News_page1 from '@/views/news/news/page1.vue'
+import News_page2 from '@/views/news/news/page2.vue'
+import News_page3 from '@/views/news/news/page3.vue'
+import News_page4 from '@/views/news/news/page4.vue'
 import Charity_p from '@/views/charity-page/charity.vue'
+import Charity_page1 from '@/views/charity-page/charity/page1.vue'
+import Charity_page2 from '@/views/charity-page/charity/page2.vue'
+import Charity_page3 from '@/views/charity-page/charity/page3.vue'
+import Charity_page4 from '@/views/charity-page/charity/page4.vue'
+
 import Info from '@/views/info/info.vue'
 import Finance from '@/views/info/finance.vue'
 import Report from '@/views/info/report.vue'
 import Party from '@/views/party/party.vue'
 import Party_Report from '@/views/party/report.vue'
+import Info_pages from '@/views/info-pages/info.vue'
+import Info_pages1 from '@/views/info-pages/info/page1.vue'
+import Info_pages2 from '@/views/info-pages/info/page2.vue'
+import Info_pages3 from '@/views/info-pages/info/page3.vue'
+import Info_pages4 from '@/views/info-pages/info/page4.vue'
+import Info_pages5 from '@/views/info-pages/info/page5.vue'
+import Info_pages6 from '@/views/info-pages/info/page6.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -158,7 +174,26 @@ const router = createRouter({
     {path: '/project-overview/page6',component: project_page6,},
     {path: '/news',component: News,},
 
+    {path: '/news',component: News,},
+    {path: '/news/page1',component: News_page1,},
+    {path: '/news/page2',component: News_page2,},
+    {path: '/news/page3',component: News_page3,},
+    {path: '/news/page4',component: News_page4,},
+
     {path:'/charity-page',component:Charity_p},
+    {path:'/charity-page/page1',component:Charity_page1},
+    {path:'/charity-page/page2',component:Charity_page2},
+    {path:'/charity-page/page3',component:Charity_page3},
+    {path:'/charity-page/page4',component:Charity_page4},
+
+    {path: '/info-pages',component: Info_pages},
+    {path: '/info-pages/page1',component: Info_pages1},
+    {path: '/info-pages/page2',component: Info_pages2},
+    {path: '/info-pages/page3',component: Info_pages3},
+    {path: '/info-pages/page4',component: Info_pages4},
+    {path: '/info-pages/page5',component: Info_pages5},
+    {path: '/info-pages/page6',component: Info_pages6},
+
   ],
 })
 

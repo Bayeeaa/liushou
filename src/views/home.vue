@@ -98,7 +98,9 @@ import { project } from "@/stores/pages";
 const pj = project()
 const project_overview = ref(pj.project_overview);
 const demo = ref(pj.demo)
+const info = ref(pj.info)
 const news = ref(pj.news)
+const Video = ref(pj.video)
 const charity = ref(pj.charity)
 </script>
 
@@ -161,8 +163,8 @@ const charity = ref(pj.charity)
       </el-row> 
 
       <el-row :gutter="20">
-        <Block title="视频推荐" morePath="/process-module" :Span="12" :items="demo"></Block>
-        <Block title="信息公开" morePath="/process-module" :Span="12" :items="demo"></Block>
+        <Block title="视频推荐" morePath="/process-module" :Span="12" :items="Video"></Block>
+        <Block title="信息公开" morePath="/info-pages" :Span="12" :items="info"></Block>
       </el-row>   
       
       <el-row>

@@ -3,11 +3,11 @@
         <el-header style="padding: 0;"><Header></Header></el-header>
         <el-main  class="main_pattern">
             <el-card class="box-card">
-                <div style="font-size:30px">最新动态</div>
+                <div style="font-size:30px">信息公开</div>
                 <el-divider />
                 <div class="text-list">
                     <div 
-                        v-for="(item, index) in news" 
+                        v-for="(item, index) in info" 
                         :key="index" 
                         class="text item" 
                         @click="navigateTo(item.path)"
@@ -28,10 +28,13 @@ import { project } from "@/stores/pages";
 import { ref } from 'vue';
 import router from '@/router';
 const pj = project()
-const news = ref(pj.news);
+const info = ref(pj.info);
 const navigateTo = (path: string) => {
     router.push(path);
-};
+  };
+
+
+  
 </script>
 
 <style>
