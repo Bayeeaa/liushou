@@ -31,21 +31,21 @@ export const project = defineStore("project", {
     ],
 
     video: [
-      { title: 'item', path:'/#' },
-      { title: 'item', path:'/#' },
-      { title: 'item', path:'/#' },
-      { title: 'item', path:'/#' },
-      { title: 'item', path:'/#' },
-      { title: 'item', path:'/#' },
+      { title: 'item', path:'#' },
+      { title: 'item', path:'#' },
+      { title: 'item', path:'#' },
+      { title: 'item', path:'#' },
+      { title: 'item', path:'#' },
+      { title: 'item', path:'#' },
     ],
 
     demo: [
-        { title: 'item', path:'/#' },
-        { title: 'item', path:'/#' },
-        { title: 'item', path:'/#' },
-        { title: 'item', path:'/#' },
-        { title: 'item', path:'/#' },
-        { title: 'item', path:'/#' },
+        { title: 'item', path:'#' },
+        { title: 'item', path:'#' },
+        { title: 'item', path:'#' },
+        { title: 'item', path:'#' },
+        { title: 'item', path:'#' },
+        { title: 'item', path:'#' },
     ]
   }),
 });

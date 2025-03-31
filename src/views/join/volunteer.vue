@@ -29,9 +29,71 @@
 
 
     </div>
+    <el-divider />
+    <h1>申请加入</h1>
+    <el-form :model="form" label-width="120px">
+      <el-form-item label="姓名">
+        <el-input v-model="form.name" placeholder="请填写真实姓名" />
+      </el-form-item>
+      <el-form-item label="年龄">
+        <el-input v-model.number="form.age" placeholder="请填写数字" />
+      </el-form-item>
+      <el-form-item label="身份证">
+        <el-input v-model="form.identity" placeholder="请填写身份证" />
+      </el-form-item>
+      <el-form-item label="志愿类型">
+        <el-select v-model="form.volunteer_type" placeholder="选择您的志愿类型">
+          <el-option label="专业志愿者" value="profession" />
+          <el-option label="大学生志愿者" value="student" />
+          <el-option label="社工机构" value="ngo" />
+        </el-select>
+      </el-form-item>
+      <el-form-item label="性别">
+        <el-radio-group v-model="form.sex">
+          <el-radio label="男" />
+          <el-radio label="女" />
+        </el-radio-group>
+      </el-form-item>
+      <el-form-item label="备注">
+        <el-input v-model="form.desc" type="textarea" placeholder="选填" />
+      </el-form-item>
+      <el-form-item>
+        <el-button type="primary" @click="onSubmit">提交</el-button>
+      </el-form-item>
+    </el-form>
 </template>
 
 <script lang="ts" setup>
+import { reactive } from 'vue'
+import axios from 'axios'
+import { ElMessage } from 'element-plus'
+
+const form = reactive({
+  name: '',
+  age: null,
+  identity: '',
+  sex: '',
+  volunteer_type: '',
+  desc: '',
+})
+
+const onSubmit = async () => {
+  if (!form.name || !form.age || !form.identity || !form.sex || !form.volunteer_type) {
+    ElMessage.error("所填内容不能为空！")
+    return
+  }
+
+  try {
+    const response = await axios.post('http://localhost:8000/api/volunteer/', form)
+    if (response.status === 201) {
+      ElMessage.success('提交成功！')
+    } else {
+      ElMessage.error('提交失败，请稍后重试')
+    }
+  } catch (error) {
+    ElMessage.error('提交失败，请检查网络或请求')
+  }
+}
 </script>
 
 <style>

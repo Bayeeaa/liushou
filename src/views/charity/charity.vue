@@ -9,9 +9,9 @@
       <RouterView />
       <br><br>
       <el-row :gutter="20">
-        <Block title="最新动态" morePath="/process-module" :Span="8" :items="demo"></Block>
-        <Block title="心灵帮助" morePath="/process-module" :Span="8" :items="demo"></Block>
-        <Block title="鸡汤文学" morePath="/process-module" :Span="8" :items="demo"></Block>
+        <Block title="最新动态" morePath="#" :Span="8" :items="demo"></Block>
+        <Block title="心灵帮助" morePath="#" :Span="8" :items="demo"></Block>
+        <Block title="鸡汤文学" morePath="#" :Span="8" :items="demo"></Block>
       </el-row>  
     </el-main>
     <el-main class="main_pattern">
@@ -58,7 +58,6 @@ import { project } from "@/stores/pages";
 const pj = project()
 const demo = ref(pj.demo)
 
-// 定义变量
 const value = ref(new Date());
 const userInput = ref('');
 const messages = ref([
@@ -66,7 +65,7 @@ const messages = ref([
 ]);
 
 const loading = ref(false);  
-const backendURL = 'http://127.0.0.1:8000/api/chat/';
+const backendURL = 'http://47.120.56.172:8000/api/chat/'; //这是ds对应的api
 
 const sendMessage = async () => {
   if (!userInput.value.trim()) return;

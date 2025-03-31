@@ -143,7 +143,7 @@ const charity = ref(pj.charity)
         <div class="block text-center">
           <br>
           <el-carousel height="150px">
-            <el-carousel-item v-for="item in word" :key="item">
+            <el-carousel-item v-for="item in word" :key="item" style="background-image: url('/src/assets/word.jpeg')">
               <div style="font-size: 40px;">{{ item }}</div>
             </el-carousel-item>
           </el-carousel>
@@ -163,7 +163,7 @@ const charity = ref(pj.charity)
       </el-row> 
 
       <el-row :gutter="20">
-        <Block title="视频推荐" morePath="/process-module" :Span="12" :items="Video"></Block>
+        <Block title="视频推荐" morePath="#" :Span="12" :items="Video"></Block>
         <Block title="信息公开" morePath="/info-pages" :Span="12" :items="info"></Block>
       </el-row>   
       
