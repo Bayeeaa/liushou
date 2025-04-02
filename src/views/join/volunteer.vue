@@ -38,6 +38,12 @@
       <el-form-item label="年龄">
         <el-input v-model.number="form.age" placeholder="请填写数字" />
       </el-form-item>
+      <el-form-item label="性别">
+        <el-radio-group v-model="form.sex">
+          <el-radio label="男" />
+          <el-radio label="女" />
+        </el-radio-group>
+      </el-form-item>      
       <el-form-item label="身份证">
         <el-input v-model="form.identity" placeholder="请填写身份证" />
       </el-form-item>
@@ -48,11 +54,14 @@
           <el-option label="社工机构" value="ngo" />
         </el-select>
       </el-form-item>
-      <el-form-item label="性别">
-        <el-radio-group v-model="form.sex">
-          <el-radio label="男" />
-          <el-radio label="女" />
-        </el-radio-group>
+      <el-form-item label="电话号码">
+        <el-input v-model="form.phone_number" placeholder="请填写电话号码" />
+      </el-form-item>
+      <el-form-item label="邮箱">
+        <el-input v-model="form.email" placeholder="请填写邮箱" />
+      </el-form-item>
+      <el-form-item label="相关经历">
+        <el-input v-model="form.exprience" type="textarea" placeholder="选填" />
       </el-form-item>
       <el-form-item label="备注">
         <el-input v-model="form.desc" type="textarea" placeholder="选填" />
@@ -75,6 +84,9 @@ const form = reactive({
   sex: '',
   volunteer_type: '',
   desc: '',
+  phone_number:'',
+  email:'',
+  exprience:'',
 })
 
 const onSubmit = async () => {
